@@ -2,44 +2,23 @@ const { Router } = require('express');
 const express = require('express');
 const Booking = require('../models/Booking');
 const { createError } = require('../utils/error');
-const { createBooking } = require('../controllers/booking_controller');
+const { createBooking, updateBooking, deleteBooking, getBooking, getBookings} = require('../controllers/booking_controller');
 
 const router = express.Router();
 
 // create bookings
 router.post("/", createBooking);
 
-// update bookings
-router.put("/", async (req, res)=> {
-    try {
-        const updateBooking = await Booking.findByIdAndUpdate(
-            req.params.id, 
-            { $set: req.body },
-            { new: true }       // after the update will create a updated version as a result
-            );
-        res.status(200).json(updateBooking)
-    }catch(err) {
-        res.status(500).json(err)
-    }
-})
+// update booking
+router.put("/:id", updateBooking);
 
 // delete
+router.delete("/:id", deleteBooking);
 
+// read the selected booking
+router.get("/:id", getBooking);
 
-// get
-
-
-// get all
-router.get("/", async (req, res, next)=> {
-    // const failed = true;
-
-    // if (failed) return next(createError(401, " You are nit authenticated!"))
-    try {
-        const Bookings = await Booking.find();
-        res.status(200).json(Bookings)
-    }catch(err) {
-        next(err);
-    }
-})
+// read all bookings
+router.get("/", getBookings);
 
 module.exports = router;
