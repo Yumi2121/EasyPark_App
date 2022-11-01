@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the Carpark schema here
-const Carpark = new Schema({
+const CarparkSchema = new Schema({
     carpark_name: {
         type: String,
         require: true
@@ -12,15 +12,20 @@ const Carpark = new Schema({
         require: true
     },
     location: {
-        type: "point",
-        require: true
+        type: { type: String },
+        coordinates: [] 
     },
-    photos: {
-        type: [String]
-    },
-    desc: {
+    price: {
         type: String,
         require: true
+    }, 
+    rating: {
+		type: Number,
+		min: 0,
+        max: 5
     }
-
 })
+
+CarparkSchema.index({ "location": "2dsphere" });
+
+module.exports = mongoose.model("Carpark", CarparkSchema);

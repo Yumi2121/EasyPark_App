@@ -1,0 +1,11 @@
+### successfully create a carpark
+POST http://localhost:8800/api/carparks
+Content-Type: application/json
+
+{
+    "carpark_name": "Joe carpark",
+    "adress": "296 Queen St, Melbourne",
+    "location": "[-37.811758, 144.959334]",
+    "price": "Daily from $5",
+    "rating": 2
+}
