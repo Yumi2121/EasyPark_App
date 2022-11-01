@@ -33,9 +33,5 @@ router.put("/", async (req, res)=> {
 
 // get all
 
-router.get("/", (req, res)=> {
-    
-})
-
 
 module.exports = router;

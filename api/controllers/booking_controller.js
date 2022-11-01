@@ -1,5 +1,6 @@
 const { Booking } = require('../models/Booking');
 
+
 const createBooking = async (req,res,next) => {
     const newBooking = new Booking(req.body);
 
@@ -44,7 +45,7 @@ const getBooking = async (req,res,next) => {
 
 const getBookings = async (req,res,next) => {
     try {
-        const bookings = await Booking.find();
+        const bookings = await Booking.find(req.body);
         res.status(200).json(bookings);
     }catch(err) {
         next(err);

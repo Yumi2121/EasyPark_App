@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const express = require('express');
-const Booking = require('../models/Booking');
+const router = express.Router();
+
 const { createError } = require('../utils/error');
 const { createBooking, updateBooking, deleteBooking, getBooking, getBookings} = require('../controllers/booking_controller');
 
-const router = express.Router();
+
 
 // create bookings
 router.post("/", createBooking);

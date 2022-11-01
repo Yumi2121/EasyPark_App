@@ -9,3 +9,25 @@ Content-Type: application/json
     "price": "Daily from $5",
     "rating": 2
 }
+
+### successfully register a user
+POST http://localhost:8800/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "email": "user1@test.com",
+    "password": "password1"
+}
+
+
+
+# ### successfully create a booking
+# POST http://localhost:8800/api/bookings
+# Content-Type: application/json
+
+# {
+#     "username": "user1",
+#     "carpark_name": "Joe carpark",
+#     "booking_date": "2020-01-11T18:00:01"
+# }
