@@ -20,6 +20,25 @@ Content-Type: application/json
     "password": "password1"
 }
 
+### successfully register a user and password has been encrypted 
+POST http://localhost:8800/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "user2",
+    "email": "user2@test.com",
+    "password": "password2"
+}
+
+### successfully signin as a user
+POST http://localhost:8800/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "user2",
+    "password": "password2"
+}
+
 
 
 # ### successfully create a booking

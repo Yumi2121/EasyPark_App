@@ -5,6 +5,7 @@ const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
+const cookieParser = require('cookie-parser');
 
 
 
@@ -27,6 +28,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // middlewares
+app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/auth', authRouter);

@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 // Define the Booking schema here
 const BookingSchema = new Schema({
     username: {
-        type: String,
-		required: true,
+      type: String,
+		  required: true,
     },
     carpark_name: {
-        type: String,
-		required: true,
+      type: String,
+		  required: true,
     },
     booking_date: {
-		type: Date,
-		required: true,
+      type: Date,
+      required: true,
 	}
 });
 
