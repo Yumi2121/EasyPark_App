@@ -2,24 +2,24 @@ const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 
-const { createError } = require('../utils/error');
-const { createBooking, updateBooking, deleteBooking, getBooking, getBookings} = require('../controllers/booking_controller');
 
+const { createBooking, updateBooking, deleteBooking, getBooking, getBookings} = require('../controllers/booking_controller');
+const { verifyUser, verifyAdmin } = require('../utils/verifyToken');
 
 
 // create bookings
-router.post("/", createBooking);
+router.post("/", verifyUser, verifyAdmin, createBooking);
 
 // update booking
-router.put("/:id", updateBooking);
+router.put("/:id", verifyUser, verifyAdmin, updateBooking);
 
 // delete
-router.delete("/:id", deleteBooking);
+router.delete("/:id", verifyUser, verifyAdmin, deleteBooking);
 
 // read the selected booking
-router.get("/:id", getBooking);
+router.get("/:id", verifyUser, getBooking);
 
 // read all bookings
-router.get("/", getBookings);
+router.get("/", verifyUser, verifyAdmin, getBookings);
 
 module.exports = router;

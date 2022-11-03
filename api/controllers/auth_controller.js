@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
         const user = await User.findOne({ username:req.body.username });
         if(!user) return next(createError(404, "User not found!"))
 
-        const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
+        const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
         if (!isPasswordCorrect) return next(createError(400, "Wrong password or username!"))
 
 
@@ -43,7 +43,7 @@ const login = async (req, res, next) => {
             httpOnly: true,    // so doesn't allow client reach this cookie
         })
         .status(200)
-        .json({...otherDetails});
+        .json({ details: {...otherDetails}, isAdmin });
     } catch(err) {
         next(err);
     }

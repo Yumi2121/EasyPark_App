@@ -35,18 +35,34 @@ POST http://localhost:8800/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "user2",
+    "username": "user2updated",
     "password": "password2"
 }
 
+### successfully update a username
+PUT http://localhost:8800/api/users/6361bc6fad04d4c042b5e3ef
+Content-Type: application/json
+
+{
+    "username": "user2updated",
+}
+
+### successfully verify a user
+GET http://localhost:8800/api/users/checkuser/6361bc6fad04d4c042b5e3ef
+Content-Type: application/json
+
+{
+    "username": "user2updated",
+}
+// => "hello user, you are loged in and you can delete your acount."
 
 
-# ### successfully create a booking
-# POST http://localhost:8800/api/bookings
-# Content-Type: application/json
+### successfully create a booking
+POST http://localhost:8800/api/bookings/
+Content-Type: application/json
 
-# {
-#     "username": "user1",
-#     "carpark_name": "Joe carpark",
-#     "booking_date": "2020-01-11T18:00:01"
-# }
+{
+    "username": "user2updated",
+    "carpark_name": "Joe carpark",
+    "booking_date": "2020-01-11T18:00:01"
+}

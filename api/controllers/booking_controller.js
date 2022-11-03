@@ -2,6 +2,7 @@ const { Booking } = require('../models/Booking');
 
 
 const createBooking = async (req,res,next) => {
+    console.log("booking req", req);
     const newBooking = new Booking(req.body);
 
     try {
