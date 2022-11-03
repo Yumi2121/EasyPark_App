@@ -8,18 +8,18 @@ const { verifyUser, verifyAdmin } = require('../utils/verifyToken');
 
 
 // create bookings
-router.post("/", verifyUser, verifyAdmin, createBooking);
+router.post("/", createBooking);
 
 // update booking
-router.put("/:id", verifyUser, verifyAdmin, updateBooking);
+router.put("/:id", updateBooking);
 
 // delete
-router.delete("/:id", verifyUser, verifyAdmin, deleteBooking);
+router.delete("/:id", deleteBooking);
 
 // read the selected booking
-router.get("/:id", verifyUser, getBooking);
+router.get("/:id", getBooking);
 
 // read all bookings
-router.get("/", verifyUser, verifyAdmin, getBookings);
+router.get("/", verifyAdmin, getBookings);
 
 module.exports = router;

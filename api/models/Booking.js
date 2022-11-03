@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 // Define the Booking schema here
 const BookingSchema = new Schema({
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    },
     carpark_name: {
       type: String,
 		  required: true,

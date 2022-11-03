@@ -58,7 +58,7 @@ Content-Type: application/json
 
 
 ### successfully create a booking
-POST http://localhost:8800/api/bookings/
+POST http://localhost:8800/api/bookings
 Content-Type: application/json
 
 {
