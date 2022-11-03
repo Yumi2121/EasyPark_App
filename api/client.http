@@ -62,7 +62,7 @@ POST http://localhost:8800/api/bookings
 Content-Type: application/json
 
 {
-    "username": "user2updated",
+    "user": "user2updated",
     "carpark_name": "Joe carpark",
     "booking_date": "2020-01-11T18:00:01"
 }
