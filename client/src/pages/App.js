@@ -8,6 +8,7 @@ import {
 import Home from "./home/Home";
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
+import 'bootswatch/dist/morph/bootstrap.min.css';
 
 
 
