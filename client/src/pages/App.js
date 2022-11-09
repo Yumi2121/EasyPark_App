@@ -22,6 +22,7 @@ function App() {
           <Route path="/carparks/:id" element={<CarparkDetail />} />
         </Routes>
       </div>
+      
     </BrowserRouter>
   );
 }
