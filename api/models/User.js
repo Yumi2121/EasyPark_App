@@ -5,17 +5,17 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     username: {
         type: String,
-		required: true,
+		required: [true, 'Please add a username'],
         unique: true
     },
     email: {
         type: String,
-		required: true,
+		required: [true, 'Please add a email'],
         unique: true
     },
     password: {
         type: String,
-		required: true,
+		required: [true, 'Please add a password'],
         unique: true
     },
     isAdmin: {

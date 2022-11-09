@@ -1,0 +1,16 @@
+/* import { DateRange } from 'react-date-range';
+import styled from 'styled-components';
+
+const StyledDateRange = styled(DateRange)`
+  position: absolute;
+  top: 200px;
+`;
+
+export default { StyledDateRange }; */
+
+
+.date {
+  flex-direction: column;
+  top: 200px;
+  /* z-index: 2; */
+}

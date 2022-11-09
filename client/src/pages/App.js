@@ -6,6 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import Home from "./home/Home";
+import List from "./list/List";
+import CarparkDetail from "./carparkDetail/carparkDetail";
+import 'bootswatch/dist/morph/bootstrap.min.css';
 
 
 
@@ -15,9 +18,11 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/carparks" element={<List />} /> */}
+          <Route path="/carparks" element={<List />} />
+          <Route path="/carparks/:id" element={<CarparkDetail />} />
         </Routes>
       </div>
+      
     </BrowserRouter>
   );
 }
