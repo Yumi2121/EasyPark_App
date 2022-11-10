@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from "./home/Home";
+import SignUp from "./signUp/SignUp";
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
 import 'bootswatch/dist/morph/bootstrap.min.css';
@@ -18,6 +19,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />
         </Routes>
