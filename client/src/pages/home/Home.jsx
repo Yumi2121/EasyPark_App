@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/NavBar";
 import Search from "../../components/search/Search";
 import Booking from "../../components/booking/Booking";
 import "./Home.css"
