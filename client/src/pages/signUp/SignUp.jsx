@@ -1,15 +1,17 @@
 import React from "react";
-import Navbar from "../../components/navbar/NavBar";
-import Forms from "../../components/forms/Forms";
+import Signup from "../../components/signup/Signup";
 
-function SignUp() {
+function Sign() {
     return (
         <>
             <div>
-            <Navbar />
-            <Forms  />
+            <Signup  />
             </div>
         </>
     )}
 
-export default SignUp;
+export default Sign;
+
+
+
+
