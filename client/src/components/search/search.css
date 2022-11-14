@@ -9,10 +9,28 @@
     background-image: url("../../images/home-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
 
 }
 
+.white-bg-image {
+    width: 98%;
+    height: 165% ;
+    transform: rotate(15deg);
+    position: absolute;
+    left: 45%;
+    opacity: 0.8;
+   
+}
 
 .search-details {
-    /* background-image: url("/client/public/home-bg.png"); */
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 900px;
+    
+    
+
 }

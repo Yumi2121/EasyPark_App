@@ -11,6 +11,7 @@ import LogIn from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
 import 'bootswatch/dist/morph/bootstrap.min.css';
+import Navbar from "../components/navbar/Navbar";
 
 
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />

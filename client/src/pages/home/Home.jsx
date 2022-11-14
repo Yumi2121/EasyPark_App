@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "../../components/navbar/NavBar";
 import Search from "../../components/search/Search";
 import Booking from "../../components/booking/Booking";
-import "./Home.css"
+import "./home.css"
+import List from "../list/List";
 
 const Home = () => {
     return (
-        <div>
-            <Navbar />           
+        <div>          
             <Search /> 
             <Booking />
+    
 
         </div>
     )
