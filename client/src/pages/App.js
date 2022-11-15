@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from "./home/Home";
-import SignUp from "./signup/Signup";
+import SignUp from "./signUp/SignUp";
 import LogIn from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
