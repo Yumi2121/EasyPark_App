@@ -5,6 +5,7 @@ import "./search.css";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useFetch from "../../hooks/useFetch";
 
 
 
@@ -16,8 +17,13 @@ const Search = () => {
     // URL constructor
     // const whitePicture = new URL("../../images/white-bg2.jpg", import.meta.url)
 
+    const {data, loading, error, reFetch } = useFetch(
+        `/carparks?${destination}`
+    );
+
     // submit search 
     const handleSearch = () => {
+        reFetch();
         navigate("/carparks", { state: destination});
     };
 

@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import Home from "./home/Home";
 import SignUp from "./signUp/SignUp";
-import LogIn from "./login/Login"
+import Login from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
 import 'bootswatch/dist/morph/bootstrap.min.css';
-import Navbar from "../components/navbar/Navbar";
+import NavbarEP from "../components/navbar/Navbar";
 
 
 
@@ -19,11 +19,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <NavbarEP />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/auth/signup" element={<SignUp />} />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />
         </Routes>
