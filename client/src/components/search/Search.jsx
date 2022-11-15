@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
+
 const Search = () => {
 
     const navigate = useNavigate();
     const [destination, setDestination] = useState("");
 
     // URL constructor
-    const whitePicture = new URL("../../images/white-bg2.jpg", import.meta.url)
+    // const whitePicture = new URL("../../images/white-bg2.jpg", import.meta.url)
 
     // submit search 
     const handleSearch = () => {
@@ -22,6 +23,7 @@ const Search = () => {
 
 
     return (
+        <div class="Container">
          <div className="search-session">
             <div className="search-details">
                 <p><h1>New Option of Parking- EasyPark</h1></p>
@@ -34,9 +36,7 @@ const Search = () => {
                 </div>
             </div>
 
-            <div className="white-bg-container" >
-                <img className="white-bg-image" src={whitePicture} />
-            </div>
+        </div>
         </div>
     )
 }
