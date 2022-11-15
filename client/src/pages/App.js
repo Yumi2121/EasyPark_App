@@ -6,12 +6,12 @@ import {
   Link
 } from "react-router-dom";
 import Home from "./home/Home";
-import SignUp from "./signUp/SignUp";
+import SignUp from "./signup/Signup";
 import LogIn from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
 import 'bootswatch/dist/morph/bootstrap.min.css';
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/navbar/NavBar";
 
 
 
