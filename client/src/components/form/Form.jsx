@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { useSignup } from "../../hooks/useSignup";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
@@ -24,17 +25,39 @@ const Form = ({ option }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(credentials) //test to see if credentials were being changed
+        console.log(credentials) //test to see if credentials were being stored
 
-        dispatch({type:"LOGIN_START"})
-        try{
-            const res = await axios.post("/login", credentials);
-            dispatch({ type: "LOGIN_SUCCESS", data: res.data});
-            navigate("/")
-        }catch(err) {
-            dispatch({type:"LOGIN_FAILURE", data:err.response.data})
+        const SignUp = async () => {
+            dispatch({type:"REGISTER_START"})
+            try{
+                const res = await axios.post("/api/auth/register", credentials);
+                dispatch({ type: "REGISTER_SUCCESS", data: res.data});
+                navigate("/")
+            }catch(err) {
+                dispatch({type:"REGISTER_FAILURE", data:err.response.data})
+            }
         }
+    
+        
+        const SignIn = async () => {
+            dispatch({type:"LOGIN_START"})
+            try{
+                const res = await axios.post("/api/auth/login", credentials);
+                dispatch({ type: "LOGIN_SUCCESS", data: res.data});
+                navigate("/")
+            }catch(err) {
+                dispatch({type:"LOGIN_FAILURE", data:err.response.data})
+            }
+        }
+       
+        if(option === 1) {
+            SignIn()
+        } else {
+            SignUp()
+        }
+
     }
+
 
     return (
         <form className='account-form' onSubmit={handleSubmit}>
