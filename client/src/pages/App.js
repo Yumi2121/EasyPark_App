@@ -22,7 +22,6 @@ function App() {
         <NavbarEP />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/auth/signup" element={<SignUp />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />
