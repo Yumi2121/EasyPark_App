@@ -1,34 +1,55 @@
+import { useContext } from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 
-const Navbar = () => {
+
+const NavbarEP = () => {
+    let navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+
     return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            {/* <img src="./logo.png" alt="easypark-logo" height={60} width={30} /> */}
-            <a class="navbar-brand" href="/">EasyPark</a>
-         
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link active" href="/">Home
-                    <span class="visually-hidden">(current)</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-                </li>   
-            </ul>
-            <div class="d-flex">
-                <a href="/login/"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button></a>
-                <a href="/signup/"><button class="btn btn-secondary my-2 my-sm-0" type="submit">Register</button></a>
-            </div>
-            </div>
-        </div>
-    </nav>
+        <Navbar bg="light" expand="lg">
+            <Container fluid>
+                {/* <img src="./logo.png" alt="easypark-logo" height={60} width={30} /> */}
+                <Navbar.Brand href="/">EasyPark</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                    className="me-auto my-2 my-lg-0"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll
+                    >
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="#action2">About</Nav.Link>
+                    </Nav>
+                    
+                    {user ? (
+                    <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
+                        user.email
+                        <Nav.Link href="/sign out">Home</Nav.Link>
+                    </Nav>
+                    )
+                    :
+                    (                    
+                    <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
+                        <Nav.Link href="/auth/login">Become a member</Nav.Link>
+                        {/* <Nav.Link href="/auth/signup">Sign up</Nav.Link> */}
+                    </Nav>
+                    )}               
+                </Navbar.Collapse>
+            </Container>
+    </Navbar>
  );
 }
 
-export default Navbar;
+export default NavbarEP;
