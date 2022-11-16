@@ -1,8 +1,12 @@
 import React from "react";
-
-const CarparkDetail = () => {
+import Booking from "../../components/booking/Booking"
+const CarparkDetail = ({item}) => {
     return (
+        <>
         <div>Carpark Detail</div>
+
+        <Booking />
+        </>
     )
 }
 

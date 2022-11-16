@@ -8,9 +8,7 @@ const Home = () => {
     return (
         <div>          
             <Search /> 
-            <Booking />
-    
-
+         
         </div>
     )
 }

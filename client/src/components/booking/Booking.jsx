@@ -6,12 +6,12 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-
 import { format } from "date-fns";
 
 
 
-const Booking = () => {
+
+const Booking = ({carparkId}) => {
     const [openDate, setOpenDate] = useState(false)
 
     const [date, setDate] = useState([
@@ -21,6 +21,7 @@ const Booking = () => {
           key: 'selection'
         }
       ]);
+
 
     return (
         // <div className="booking-session">

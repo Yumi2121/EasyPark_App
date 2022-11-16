@@ -6,12 +6,15 @@ import Col from 'react-bootstrap/Col';
 // import { useLocation } from "react-router-dom";
 import SearchItem from "../../components/searchItem/SearchItem";
 import "./list.css";
+import useFetch from '../../hooks/useFetch';
 
 const List = () => {
 
     // const location = useLocation();
     // const [destination, setDestination] = useState(location.state.destination);
 
+    // need to modify later
+    const {data, loading, error, reFetch } = useFetch("/carparks?lists") 
 
     return (
        
@@ -26,11 +29,14 @@ const List = () => {
                             </div>
 
                             <div className="listResult">
-                                <SearchItem />
-                                <SearchItem />
-                                <SearchItem />
-                                <SearchItem />
-                                <SearchItem />
+                                {loading ? "loading" : <>
+                                {data.map(item => (
+                                     <SearchItem key={item._id} />
+                                ))}
+                               
+                                </> }
+                              
+                             
                             </div>
                         </Col>  
                         <Col className="mapSession">

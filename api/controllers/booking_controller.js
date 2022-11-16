@@ -47,6 +47,7 @@ const getBooking = async (req,res,next) => {
 const getBookings = async (req,res,next) => {
     try {
         const bookings = await Booking.find(req.body);
+        // const bookings = await Booking.find(req.query);
         res.status(200).json(bookings);
     }catch(err) {
         next(err);
