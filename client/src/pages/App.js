@@ -11,7 +11,7 @@ import Login from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
 // import 'bootswatch/dist/morph/bootstrap.min.css';
-import NavbarEP from "../components/navbar/Navbar";
+import NavbarEP from "../components/navbar/NavBar";
 
 
 
