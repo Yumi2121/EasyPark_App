@@ -6,6 +6,7 @@ const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv')
 
 
 
@@ -48,7 +49,7 @@ app.use((err,req,res,next) => {
 });
 
 
-app.listen(8800, () => {
+app.listen(8000, () => {
     connect()
     console.log("EasyPark connected to backend.")
 })

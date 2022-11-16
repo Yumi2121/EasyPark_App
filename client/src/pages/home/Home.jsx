@@ -7,6 +7,7 @@ const Home = () => {
     return (
         <div>          
             <Search /> 
+            {/* <About /> */}
          
         </div>
     )
