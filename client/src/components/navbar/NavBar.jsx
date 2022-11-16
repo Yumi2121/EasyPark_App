@@ -5,9 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
+
 
 
 const NavbarEP = () => {
+    let navigate = useNavigate();
     const { user } = useContext(AuthContext);
 
     return (
@@ -27,16 +30,21 @@ const NavbarEP = () => {
                     </Nav>
                     
                     {user ? (
-                    <Form className="d-flex">
+                    <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
                         user.email
-                        <Button variant="btn-secondary" type="submit">sign out</Button>
-                    </Form>
+                        <Nav.Link href="/sign out">Home</Nav.Link>
+                    </Nav>
                     )
                     :
-                    (<Form className="d-flex">
-                        <Button variant="btn-secondary" type="submit">Sign in </Button>
-                        <Button variant="btn-secondary" type="submit">sign up</Button>
-                    </Form>
+                    (                    
+                    <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
+                        <Nav.Link href="/auth/login">Become a member</Nav.Link>
+                        {/* <Nav.Link href="/auth/signup">Sign up</Nav.Link> */}
+                    </Nav>
                     )}               
                 </Navbar.Collapse>
             </Container>
