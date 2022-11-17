@@ -48,7 +48,6 @@ app.use((err,req,res,next) => {
     });
 });
 
-
 app.listen(8000, () => {
     connect()
     console.log("EasyPark connected to backend.")
