@@ -1,14 +1,15 @@
 import React from "react";
 import Search from "../../components/search/Search";
-import "./home.css"
+import About from "../../components/about/About"
+import Booking from "../../components/booking/Booking";
+import "./Home.css"
 import List from "../list/List";
 
 const Home = () => {
     return (
         <div>          
             <Search /> 
-            {/* <About /> */}
-         
+            <About />
         </div>
     )
 }
