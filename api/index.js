@@ -7,6 +7,7 @@ const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv')
+const morgan = require('morgan')
 
 
 
@@ -31,6 +32,10 @@ mongoose.connection.on("disconnected", () => {
 // middlewares
 app.use(cookieParser());
 app.use(express.json());
+
+
+app.use(morgan("[:date[iso]] Started :method :url for :remote-addr", { immediate: true }))
+app.use(morgan("[:date[iso]] Completed :status in :response-time ms"))
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);

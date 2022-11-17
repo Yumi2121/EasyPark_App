@@ -11,39 +11,61 @@ const Form = ({ option }) => {
         password: undefined,
     });
 
-    const { loading, error, dispatch } = useContext(AuthContext);
+    const { laoding, error, dispatch } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
 
     const handleChange = (e) => {
-        console.log(e.target.id)
         setCredentials(prev=> ({ ...prev, [e.target.id]: e.target.value}));
     };
-    
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(credentials) //test to see if credentials were being changed
+        console.log(credentials) //test to see if credentials were being stored
 
-        dispatch({type:"LOGIN_START"})
-        try{
-            const res = await axios.post("/login", credentials);
-            dispatch({ type: "LOGIN_SUCCESS", data: res.data});
-            navigate("/")
-        }catch(err) {
-            dispatch({type:"LOGIN_FAILURE", data:err.response.data})
+        const SignUp = async () => {
+            dispatch({type:"REGISTER_START"})
+            try{
+                const res = await axios.post("/api/auth/register", credentials);
+                dispatch({ type: "REGISTER_SUCCESS", data: res.data});
+                navigate("/")
+            }catch(err) {
+                dispatch({type:"REGISTER_FAILURE", data:err.response.data})
+            }
         }
+    
+        
+        const SignIn = async () => {
+            dispatch({type:"LOGIN_START"})
+            try{
+                const res = await axios.post("/api/auth/login", credentials);
+                dispatch({ type: "LOGIN_SUCCESS", data: res.data});
+                navigate("/")
+            }catch(err) {
+                dispatch({type:"LOGIN_FAILURE", data:err.response.data})
+            }
+        }
+       
+        if(option === 1) {
+            SignIn()
+        } else {
+            SignUp()
+        }
+
     }
+
 
     return (
         <form className='account-form' onSubmit={handleSubmit}>
             <div className={'account-form-fields ' + (option === 1 ? 'sign-in' : (option === 2 ? 'sign-up' : 'forgot')) }>
-                <input id='email'  name='email' type='email' placeholder='E-mail' value={credentials.email} onChange={handleChange}  required />
-                <input id='password' name='password' type='password' placeholder='Password' value={credentials.password} onChange={handleChange} required={option === 1 || option === 2 ? true : false} disabled={option === 3 ? true : false} />
+                <input id='email' name='email' type='email' placeholder='E-mail' required />
+                <input id='password' name='password' type='password' placeholder='Password' required={option === 1 || option === 2 ? true : false} disabled={option === 3 ? true : false} />
                 <input id='repeat-password' name='repeat-password' type='password' placeholder='Repeat password' required={option === 2 ? true : false} disabled={option === 1 || option === 3 ? true : false} />
             </div>
-            <button className='btn-submit-form' type='submit' >
+            <button className='btn-submit-form' type='submit'>
                 { option === 1 ? 'Sign in' : (option === 2 ? 'Sign up' : 'Reset password') }
             </button>
         </form>
