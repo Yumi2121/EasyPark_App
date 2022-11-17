@@ -1,0 +1,21 @@
+p{
+    font-size: 25px
+}
+
+.about-title{
+    margin-bottom: 50px;
+}
+
+.about-text{
+    padding: 10px 300px 50px 300px;
+}
+
+.about-subtitle{
+    margin-bottom: -75px;
+}
+.flex-container {
+    margin: 40px auto 0 auto;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+  }
