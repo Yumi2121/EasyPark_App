@@ -7,6 +7,8 @@ require('dotenv').config()
 
 
 const register = async (req, res, next) => {
+    console.log('body', req.body)
+    console.log('headers', req.headers)
     try {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -20,6 +22,7 @@ const register = async (req, res, next) => {
         await newUser.save();
         res.status(201).send("User has been created.");
     } catch(err) {
+        console.log(err)
         res.status(500).send({...err, message: err.message});
     }
 };

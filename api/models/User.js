@@ -10,14 +10,12 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-		required: [true, 'Please add a password'],
-        unique: true
+		required: [true, 'Please add a password']
     },
     isAdmin: {
 		type: Boolean,
 		default: false,
 	},
-},
-{ timestamps: true });
+},{ timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);

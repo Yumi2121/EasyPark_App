@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const jwt = require('jsonwebtoken')
 // import routes
 const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
@@ -31,10 +32,23 @@ mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected!!");
 });
 
+function authenticationMiddleware(req, res, next) {
+    const token = req.cookies["access_token"]
+
+    jwt.verify(token, process.env.JWT_key, (err, decoded) => {
+        if(!err){
+            req.userId = decoded.id
+            req.isAdmin = decoded.isAdmin
+        }
+        next()
+    })
+}
+
 // middlewares
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(authenticationMiddleware)
 // app.use(express.json());
 
 app.use(morgan("[:date[iso]] Started :method :url for :remote-addr", { immediate: true }))
@@ -46,8 +60,6 @@ app.use('/api/bookings', bookingsRouter);
 app.use('/api/carparks', carparksRouter);
 
 app.use((err,req,res,next) => {
-    console.log(err)
-    console.log(req)
     const errorStatus = err.status || 500
     const errorMessage = err.message || "Something went wrong!"
     return res.status(errorStatus).json({
