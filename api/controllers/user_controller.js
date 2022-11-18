@@ -1,10 +1,19 @@
 const User = require('../models/User');
 
+const currentUser = async (req, res, next) => {
+    if(req.userId) {
+        const user = User.findById(req.userId)
+
+        res.status(200).json(user)
+    } else {
+        res.status(404)
+    }
+}
 
 const updateUser = async (req,res,next) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(
-            req.params.id, 
+            req.params.id,
             { $set: req.body },
             { new: true }       // after the update will create a updated version as a result
             );
