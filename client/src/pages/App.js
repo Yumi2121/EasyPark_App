@@ -12,6 +12,7 @@ import CarparkDetail from "./carparkDetail/carparkDetail";
 // import 'bootswatch/dist/morph/bootstrap.min.css';
 import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
+import About from "../components/about/About";
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />

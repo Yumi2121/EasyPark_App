@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './pages/App';
 // import "bootswatch/dist/morph/bootstrap.min.css";
 import { AuthContextProvider } from './utils/AuthContext';
+import { SearchContextProvider } from './utils/SearchContext';
 
 
 
@@ -10,8 +11,11 @@ import { AuthContextProvider } from './utils/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  
     <AuthContextProvider>
-      <App />
+      <SearchContextProvider>
+        <App />
+      </SearchContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

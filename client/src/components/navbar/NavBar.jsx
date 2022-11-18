@@ -26,7 +26,7 @@ const NavbarEP = () => {
                     navbarScroll
                     >
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="#action2">About</Nav.Link>
+                        <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
                     {user ? (
@@ -34,6 +34,7 @@ const NavbarEP = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
                         user.email
+                        <Nav.Link href="/auth/log out">log out</Nav.Link>
                     </Nav>
                     )
                     :

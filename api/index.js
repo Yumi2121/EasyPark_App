@@ -10,12 +10,14 @@ const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
+const cors = require('cors');
 const port= process.env.PORT || 8000;
 
 
 
 
 const app = express();
+app.use(cors())
 // to make sure our MongoDB data can be read in env file
 require('dotenv').config()
 

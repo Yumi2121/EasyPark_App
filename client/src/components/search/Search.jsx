@@ -25,6 +25,7 @@ const Search = () => {
     const [destination, setDestination] = useState("");
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
+
     useEffect(() => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
          inputRef.current,
@@ -60,6 +61,11 @@ const Search = () => {
         }});
     };
     
+    // const changeHandler =(e) => {
+    //     setSearchInput(e.target.value)
+    
+    // }
+    
     return (
         <div className="Container">
          <div className="search-session">
@@ -70,6 +76,7 @@ const Search = () => {
                 <div>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     <input ref={inputRef} 
+                    // onChange={changeHandler}
                     type="text" placeholder="Search for the address" 
                     className="searchInput" 
                    />
