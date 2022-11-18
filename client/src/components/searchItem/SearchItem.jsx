@@ -2,7 +2,7 @@ import "./searchItem.css"
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../utils/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Booking from "../../components/booking/Booking"

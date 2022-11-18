@@ -10,7 +10,8 @@ const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
-const dotenv = require('dotenv');
+const port= process.env.PORT || 8000;
+
 
 
 
@@ -71,7 +72,8 @@ app.use((err,req,res,next) => {
 });
 
 
-app.listen(8800, () => {
+app.listen(port, () => {
     connect()
     console.log("EasyPark connected to backend.")
+    console.log(`Server is running on port: ${port}`);
 })

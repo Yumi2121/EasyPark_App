@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../utils/AuthContext';
 import { useNavigate } from "react-router-dom";
 
 
@@ -34,7 +34,6 @@ const NavbarEP = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
                         user.email
-                        <Nav.Link href="/sign out">Home</Nav.Link>
                     </Nav>
                     )
                     :

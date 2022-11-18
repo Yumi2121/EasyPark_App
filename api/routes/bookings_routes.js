@@ -8,16 +8,16 @@ const { verifyUser, verifyAdmin } = require('../utils/verifyToken');
 
 
 // create bookings
-router.post("/", createBooking);
+router.post("/", verifyUser, createBooking);
 
 // update booking
-router.put("/:id", updateBooking);
+router.put("/:id", verifyUser, updateBooking);
 
 // delete
-router.delete("/:id", deleteBooking);
+router.delete("/:id", verifyUser, deleteBooking);
 
 // read the selected booking
-router.get("/:id", getBooking);
+router.get("/:id", verifyUser, getBooking);
 
 // read all bookings
 router.get("/", verifyAdmin, getBookings);

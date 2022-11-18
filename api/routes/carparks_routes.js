@@ -1,40 +1,25 @@
 const { Router } = require('express');
 const express = require('express');
-const Carpark = require('../models/Carpark');
 const { verifyAdmin } = require('../utils/verifyToken');
 
 const router = express.Router();
 
+const { createCarpark, updateCarpark, getCarpark, deleteCarpark, getCarparks} = require('../controllers/carpark_controller');
 
 
 // create
-router.post("/", async (req, res)=> {
-
-    const newCarpark = new Carpark(req.body)
-
-    try {
-        const saveCarpark = await newCarpark.save()
-        res.status(200).json(saveCarpark)
-    }catch(err) {
-        res.status(500).json(err)
-    }
-}, verifyAdmin)
+router.post("/", createCarpark);
 
 // update
-router.put("/", async (req, res)=> {
-    try {
-        const Carpark = await newCarpark.save()
-        res.status(200).json(saveCarpark)
-    }catch(err) {
-        res.status(500).json(err)
-    }
-}, verifyAdmin)
+router.put("/:id", updateCarpark);
 
 // delete
+router.delete("/:id", deleteCarpark);
 
 // get
+router.get("/:id", getCarpark);
 
 // get all
-
+router.get("/", getCarparks);
 
 module.exports = router;

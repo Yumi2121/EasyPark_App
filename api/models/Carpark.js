@@ -11,12 +11,16 @@ const CarparkSchema = new Schema({
         type: String,
         require: true
     },
-    location: {
-        type: { type: String },
-        coordinates: [] 
+    lat: {
+        type: Number,
+        require: true 
+    },
+    lng: {
+        type: Number,
+        require: true 
     },
     price: {
-        type: String,
+        type: Number,
         require: true
     }, 
     rating: {

@@ -1,4 +1,4 @@
-const { User } = require('../models/User');
+const User = require('../models/User');
 
 const currentUser = async (req, res, next) => {
     if(req.userId) {

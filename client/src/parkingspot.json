@@ -1,0 +1,73 @@
+[
+    {
+        "carpark_name": "Kate's star parking",
+        "address": "62 Latrobe st, Melbourne",
+        "lat": -37.80743005856984, 
+        "lng": 144.9672278750143,
+        "price": 5
+    },
+    {
+        "carpark_name": "Joe Garage",
+        "address": "310 Flinders ln, Melbourne",
+        "lat": -37.81631299125414, 
+        "lng": 144.96370881674534,
+        "price": 7
+    },
+    {
+        "carpark_name": "The best Parking with Will",
+        "address": "22 Eagle alley, Melbourne",
+        "lat": -37.811905562851926, 
+        "lng": 144.95491117113767,
+        "price": 5
+    },
+    {
+        "carpark_name": "Sky's cool parking",
+        "address": "28 Flinders ln, Melbourne",
+        "lat": -37.8137702761664, 
+        "lng": 144.97362226152327,
+        "price": 8
+    },
+    {
+        "carpark_name": "Tom's front yard",
+        "address": "24 Villiers st, North Melbourne",
+        "lat": -37.79929208320539, 
+        "lng": 144.95345204947424,
+        "price": 6.5
+    },
+    {
+
+        "carpark_name": "New Willson parking",
+        "address": "141 Lygon st, Carlton",
+        "lat": -37.80312382496757,
+        "lng": 144.96636956828783,
+        "price": 9
+    },
+    {
+        "carpark_name": "Jams's Garage",
+        "address": "300 Lonsdale st, Melbourne",
+        "lat": -37.81078671215474,
+        "lng": 144.96370881693403,
+        "price": 6
+    },
+    {
+        "carpark_name": "Cool parking lot",
+        "address": "41 Victoria parade, Fitzroy",
+        "lat": -37.806107698613,
+        "lng": 144.97529596005714,
+        "price": 8
+    },
+    {
+        "carpark_name": "Mike's No.1 parking",
+        "address": "740 Bourke st, Docklands",
+        "lat": -37.81590616268264,
+        "lng": 144.9474439012731,
+        "price": 7
+    },
+    {
+        "carpark_name": "Elle parking",
+        "address": "11 Nicholson st, Carlton",
+        "lat": -37.80251347236773,
+        "lng": 144.97186273240908,
+        "price": 6
+    }
+]
