@@ -7,6 +7,7 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
+import Container from 'react-bootstrap/Container';
 
 
 
@@ -24,24 +25,8 @@ const Booking = ({carparkId}) => {
 
 
     return (
-        // <div className="booking-session">
-        //     <div className="bookingItem">
-        //         <FontAwesomeIcon icon={faCalenderDays} />
-        //         <span classname="BookingText">date to date</span>
-        //     </div>
 
-        //     <div className="bookingItem">
-        //         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        //         <input type="text" placeholder="Where are you going?" classname="SearchInput" />
-        //     </div>
-
-        //     <div className="bookingItem">
-        //         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        //         <input type="text" placeholder="Where are you going?" classname="SearchInput" />
-        //     </div>
-        // </div>
-
-    <div class="container">
+    <Container>
         <form>
         <fieldset>
             <legend>Booking Details</legend>
@@ -74,14 +59,14 @@ const Booking = ({carparkId}) => {
             </div> */}
         </fieldset>
 
-            <div class="container">
+            <Container>
                 <button type="submit" class="btn btn-primary">Book Now</button>
                 <small id="submitlHelp" class="form-text text-muted">Book now and pay later!</small>
 
-            </div>
+            </Container>
        
         </form>
-    </div>
+    </Container>
     )
 }
 

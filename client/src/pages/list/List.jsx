@@ -18,7 +18,7 @@ import { getCarparks } from '../../services/carparkServices';
 //     const [destination, setDestination] = useState(location.state.destination);
 
 //     // need to modify later
-//     const {data, loading, error, reFetch }  = useFetch("/carparks?lists") 
+    // const {data, loading, error, reFetch }  = useFetch("/carparks?lists") 
     
 //     return (
 
@@ -60,45 +60,57 @@ import { getCarparks } from '../../services/carparkServices';
 const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
-    const [lat1,setLat1] = useState(0);
-
-
-    const { data, loading, error } = useFetch('/carparks');
   
-//  export default function CarparkList() {
-//     const [carparks, setCarparks] = useState([]);
+    const {data, loading, error, reFetch }  = useFetch("/carparks");
+    console.log(data)
+    // const [carparks, setCarparks] = useState([]);
+ 
 
-//     const allCarparks = async () => {
-//         await getCarparks()
+    // useEffect(() => {
+    //         getCarparks()
+    //         .then(carparks => {
+    //             console.log(carparks)
+    //         })       
         
-//     }
-    
-//     console.log(allCarparks)
-
-    
-
-//     useEffect(() => {
-       
-//     }, []);
+    // }, []);
 
     return (
-        <div className="googlemap">
-             <div className="listSearch">
-                <h2>Search</h2>
-                <label>Destination</label>
-                <input placeholder={destination} type="text" />
-            </div>
+        <>
+       
+            {/* <div>
+                <SimpleMap lat={lat} lng={lng}/> 
+            </div> */}
 
-{/* 
-            <div>
-                {CarparkList() }
-             </div>
+          
+            <Container>
+                <Row className="listContainer">                
+                        <Col className="left-session">
+                            <div className="listSearch">
+                                <h2>Search</h2>
+                                <label>Destination</label>
+                                <input placeholder={destination} type="text" />
+                            </div>
 
+                            <div className="listResult">
+                                {loading ? "loading" : <>
+                                {data.map(item => (
+                                     <SearchItem key={item._id} />
+                                ))}
+                               
+                                </> }
+        
+                            </div>
+                        </Col>  
 
-         
-            <SimpleMap lat={lat} lng={lng}/>  */}
-         </div> 
-    )
-    
+                        <Col className="mapSession">
+                            <div className="googlemap">
+                                {/* <SimpleMap /> */}
+                            </div>
+                        </Col>  
+                </Row>
+            </Container>
+        </>
+    );
 };
+
 export default List;
