@@ -11,15 +11,13 @@ const Form = ({ option }) => {
         password: undefined,
     });
 
-    const { laoding, error, dispatch } = useContext(AuthContext);
+    const { loading, error, dispatch } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
-
     const handleChange = (e) => {
-        setCredentials(prev=> ({ ...prev, [e.target.id]: e.target.value}));
+        setCredentials(prev=> ({ ...prev, [e.target.name]: e.target.value}));
     };
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,19 +27,18 @@ const Form = ({ option }) => {
         const SignUp = async () => {
             dispatch({type:"REGISTER_START"})
             try{
-                const res = await axios.post("/api/auth/register", credentials);
+                const res = await axios.post("/auth/register", credentials);
                 dispatch({ type: "REGISTER_SUCCESS", data: res.data});
                 navigate("/")
-            }catch(err) {
+            } catch(err) {
                 dispatch({type:"REGISTER_FAILURE", data:err.response.data})
             }
         }
-    
-        
+
         const SignIn = async () => {
             dispatch({type:"LOGIN_START"})
             try{
-                const res = await axios.post("/api/auth/login", credentials);
+                const res = await axios.post("/auth/login", credentials);
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")
             }catch(err) {
@@ -61,9 +58,9 @@ const Form = ({ option }) => {
     return (
         <form className='account-form' onSubmit={handleSubmit}>
             <div className={'account-form-fields ' + (option === 1 ? 'sign-in' : (option === 2 ? 'sign-up' : 'forgot')) }>
-                <input id='email' name='email' type='email' placeholder='E-mail' required />
-                <input id='password' name='password' type='password' placeholder='Password' required={option === 1 || option === 2 ? true : false} disabled={option === 3 ? true : false} />
-                <input id='repeat-password' name='repeat-password' type='password' placeholder='Repeat password' required={option === 2 ? true : false} disabled={option === 1 || option === 3 ? true : false} />
+                <input onChange={handleChange} name='email' type='email' placeholder='E-mail' required />
+                <input onChange={handleChange} name='password' type='password' placeholder='Password' required={option === 1 || option === 2 ? true : false} disabled={option === 3 ? true : false} />
+                <input onChange={handleChange} name='repeat-password' type='password' placeholder='Repeat password' required={option === 2 ? true : false} disabled={option === 1 || option === 3 ? true : false} />
             </div>
             <button className='btn-submit-form' type='submit'>
                 { option === 1 ? 'Sign in' : (option === 2 ? 'Sign up' : 'Reset password') }

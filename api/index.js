@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+// import middleware
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 // import routes
 const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
-const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv')
-const morgan = require('morgan')
+const dotenv = require('dotenv');
 
 
 
@@ -31,8 +33,9 @@ mongoose.connection.on("disconnected", () => {
 
 // middlewares
 app.use(cookieParser());
-app.use(express.json());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
+// app.use(express.json());
 
 app.use(morgan("[:date[iso]] Started :method :url for :remote-addr", { immediate: true }))
 app.use(morgan("[:date[iso]] Completed :status in :response-time ms"))
@@ -43,6 +46,8 @@ app.use('/api/bookings', bookingsRouter);
 app.use('/api/carparks', carparksRouter);
 
 app.use((err,req,res,next) => {
+    console.log(err)
+    console.log(req)
     const errorStatus = err.status || 500
     const errorMessage = err.message || "Something went wrong!"
     return res.status(errorStatus).json({

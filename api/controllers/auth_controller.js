@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
         await newUser.save();
         res.status(201).send("User has been created.");
     } catch(err) {
-        next(err);
+        res.status(500).send({...err, message: err.message});
     }
 };
 
@@ -43,7 +43,7 @@ const login = async (req, res, next) => {
         .status(200)
         .json({ details: {...otherDetails}, isAdmin });
     } catch(err) {
-        next(err);
+        res.status(500).send({...err, message: err.message});
     }
 };
 
