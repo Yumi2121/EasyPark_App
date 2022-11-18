@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 // Define the User schema here
 const UserSchema = new Schema({
-    username: {
-        type: String,
-		required: [true, 'Please add a username'],
-        unique: true
-    },
+    // username: {
+    //     type: String,
+	// 	required: [true, 'Please add a username'],
+    //     unique: true
+    // },
     email: {
         type: String,
 		required: [true, 'Please add a email'],

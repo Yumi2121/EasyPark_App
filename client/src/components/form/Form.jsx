@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../utils/AuthContext";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
