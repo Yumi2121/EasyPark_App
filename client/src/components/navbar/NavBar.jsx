@@ -34,7 +34,6 @@ const NavbarEP = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
                         user.email
-                        <Nav.Link href="/sign out">Home</Nav.Link>
                     </Nav>
                     )
                     :

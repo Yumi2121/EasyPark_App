@@ -57,48 +57,48 @@ import { getCarparks } from '../../services/carparkServices';
 // };
 
 
-// const List = () => {
-//     const location = useLocation();
-//     const {lat, lng, destination} = location.state;
-    // const [lat1,setLat1] = useState(0);
+const List = () => {
+    const location = useLocation();
+    const {lat, lng, destination} = location.state;
+    const [lat1,setLat1] = useState(0);
 
 
-    // const { data, loading, error } = useFetch('/carparks');
+    const { data, loading, error } = useFetch('/carparks');
   
- export default function CarparkList() {
-    const [carparks, setCarparks] = useState([]);
+//  export default function CarparkList() {
+//     const [carparks, setCarparks] = useState([]);
 
-    const allCarparks = async () => {
-        await getCarparks()
+//     const allCarparks = async () => {
+//         await getCarparks()
         
-    }
+//     }
     
-    console.log(allCarparks)
+//     console.log(allCarparks)
 
     
 
-    useEffect(() => {
+//     useEffect(() => {
        
-    }, []);
+//     }, []);
 
     return (
-        // <div className="googlemap">
-        //      <div className="listSearch">
-        //         <h2>Search</h2>
-        //         <label>Destination</label>
-        //         <input placeholder={destination} type="text" />
-        //     </div>
+        <div className="googlemap">
+             <div className="listSearch">
+                <h2>Search</h2>
+                <label>Destination</label>
+                <input placeholder={destination} type="text" />
+            </div>
 
-
+{/* 
             <div>
                 {CarparkList() }
-            </div>
+             </div>
 
 
          
-            /* <SimpleMap lat={lat} lng={lng}/> */
-        // </div> 
+            <SimpleMap lat={lat} lng={lng}/>  */}
+         </div> 
     )
     
 };
-// export default List;
+export default List;
