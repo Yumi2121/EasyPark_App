@@ -45,7 +45,7 @@ const getCarpark = async (req,res,next) => {
 
 const getCarparks = async (req,res,next) => {
     try {
-        const carparks = await Booking.find(req.body);
+        const carparks = await Carpark.find(req.body);
         // const bookings = await Booking.find(req.query);
         res.status(200).json(carparks);
     }catch(err) {
