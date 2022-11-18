@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "../../utils/useFetch";
 import { useRef, useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../utils/AuthContext";
 
 
 
@@ -25,6 +27,10 @@ const Search = () => {
     const [destination, setDestination] = useState("");
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
+
+    // const {user } = useContext(AuthContext);
+    // const { dispatch } = useContext(SearchContext);
+    
 
     useEffect(() => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
@@ -59,6 +65,7 @@ const Search = () => {
             lng: lng, 
             destination: destination
         }});
+        // dispatch({ type: "NEW_SEARCH", payload: {}})
     };
     
     // const changeHandler =(e) => {
