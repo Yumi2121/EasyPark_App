@@ -6,13 +6,15 @@ import { AuthContext } from "../../utils/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Booking from "../../components/booking/Booking"
+import da from "date-fns/esm/locale/da/index.js";
 
-const SearchItem = () => {
+const SearchItem = (item) => {
     const location = useLocation();
     const id = location.pathname.split("/");
     const [openBooking, setOpenBooking] = useState(false);
 
         // const { data, loading, error} = useFetch(`/carparks/find${id}`);
+      
         const { user } = useContext(AuthContext);
         const navigate = useNavigate();
     
@@ -26,10 +28,10 @@ const SearchItem = () => {
 
     return (
         <>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' height: '5rem' }}>
             <Card.Body>
-                <Card.Title>Joe Garage</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">1 Elizabeth Street, Melbourne</Card.Subtitle>
+                <Card.Title>name</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">address</Card.Subtitle>
                 <Card.Text>
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
@@ -37,7 +39,7 @@ const SearchItem = () => {
                 <Card.Link href="#">Book</Card.Link>
                 <Button onClick={handleClick} variant="primary">Daily from $6</Button>
             </Card.Body>
-    </Card>
+        </Card>
 
     {openBooking && <Booking carparkId= {id}/> }
     </>

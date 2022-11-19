@@ -1,20 +1,21 @@
 import { createContext, useReducer, useEffect  } from "react";
 
 const INITIAL_STATE = {
-    userCarpark: ""
-      
+    userCarpark: "",
+    lat: "",
+    lng: ""  
 }
 
 export const SearchContext = createContext(INITIAL_STATE);
 
 const SearchReducer = (state, action) => {
     switch (action.type) {
-        case "SET_USER_CARPARK":
-            return {
-             userCarpark: action.data
-        };
-       
-        default: return state
+        case "NEW_SEARCH":
+            return action.paylaod;     
+        case "RESET_SEARCH":
+            return INITIAL_STATE;
+        default: 
+            return state;
     }
 };
 
@@ -25,6 +26,8 @@ export const SearchContextProvider = ({ children }) => {
       <SearchContext.Provider
         value={{
           userCarpark: state.userCarpark,
+          lat: state.lat,
+          lng: state.lng,
           dispatch,
         }}
       >

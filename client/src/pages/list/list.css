@@ -7,3 +7,17 @@ body {
     height: 100vh;
     width: 100%;
   }
+
+  .listcontainer {
+    display: flex;
+    position: relative;
+  }
+
+  .listResult {
+    position: relative;
+  }
+
+  .list-session {
+    display: flex;
+  }
+
