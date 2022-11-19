@@ -25,6 +25,17 @@ function distance(lat1, long1, lat2, long2) {
     return Math.sqrt(Math.pow(lat2-lat1, 2) + Math.pow(long2-long1, 2));
 }
 
+// function myMap() {
+//     var mapProp= {
+//         center:new google.maps.LatLng(51.508742,-0.120850),
+//     zoom:5,
+//     };
+//     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+// }
+function myMap() {
+
+}
+
 const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
@@ -46,6 +57,12 @@ const List = () => {
 
     return (
         <>
+            {/* <div id="googleMap" style="width:200px;height:200px;"></div>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiKc4HxX5G7EfneIZBN_Hlk2_luoT_yvo&callback=myMap"></script> */}
+
+            {/* <img src="https://cdn.cnn.com/cnnnext/dam/assets/221118095447-02-ukraine-power-grid-winter-large-tease.jpg"></img> */}
+
 
             <Container className="list-session">
                 <Row className="listContainer">                
@@ -58,18 +75,20 @@ const List = () => {
 
                             <div className="listResult">
                                 {loading ? "loading" : <>
-                                {filteredCarpark.map(item => (
-                                      <Card style={{ width: '18rem' }}>
-                                      <Card.Body>
-                                          <Card.Title>{item.carpark_name}</Card.Title>
-                                          <Card.Subtitle className="mb-2 text-muted">{item.carpark_name}</Card.Subtitle>
-                                          <Card.Text>
-                    
-                                          </Card.Text>
-                                          <Card.Link href="#">Book</Card.Link>
-                                          {/* <Button onClick={handleClick} variant="primary">Daily from $6</Button> */}
-                                      </Card.Body>
-                                  </Card>
+                                {filteredCarpark.map((item, i) => (
+                                    <div className="card-container" key={i} >
+                                      <Card style={{ width: '18rem' }} >
+                                        <Card.Body>
+                                            <Card.Title>{item.carpark_name}</Card.Title>
+                                            <Card.Subtitle className="mb-2 text-muted">{item.carpark_name}</Card.Subtitle>
+                                            <Card.Text>
+                        
+                                            </Card.Text>
+                                            <Card.Link href="#">Book</Card.Link>
+                                            {/* <Button onClick={handleClick} variant="primary">Daily from $6</Button> */}
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
                                 ))}
                                
                                 </> }
