@@ -9,9 +9,18 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 const NavbarEP = () => {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
+
+    // console.log(user)
+
+    const handleLogout = () => {
+            dispatch({ type: "LOGOUT" });
+            navigate("/")
+        }
 
     return (
         <Navbar bg="light" expand="lg">
@@ -29,23 +38,26 @@ const NavbarEP = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
-                    {user ? (
+                    { !user ? 
+                       (                    
+                        <Nav className="d-flex"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll>
+                            <Nav.Link href="/auth/login">Become a member</Nav.Link>
+                
+                        </Nav>
+                        )
+                        :
+                        (
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        user.email
-                        <Nav.Link href="/auth/log out">log out</Nav.Link>
+                        <Nav.Link >{user.details.email}</Nav.Link>
+                        <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
-                    :
-                    (                    
-                    <Nav className="d-flex"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll>
-                        <Nav.Link href="/auth/login">Become a member</Nav.Link>
-                        {/* <Nav.Link href="/auth/signup">Sign up</Nav.Link> */}
-                    </Nav>
-                    )}               
+                 
+                    }               
                 </Navbar.Collapse>
             </Container>
     </Navbar>

@@ -8,11 +8,15 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 
 
-const Booking = ({carparkId}) => {
+const Booking = (props) => {
+    
+
     const [openDate, setOpenDate] = useState(false)
 
     const [date, setDate] = useState([
@@ -25,25 +29,18 @@ const Booking = ({carparkId}) => {
 
 
     return (
-
     <Container>
-        <form>
+        <Form>
         <fieldset>
-            <legend>Booking Details</legend>
-            <div class="form-group">
-            <label for="exampleSelect1" class="form-label mt-4">Carpark</label>
-            <select class="form-select" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            </div>
-            <div class="form-group">
-                <label for="booking-date" class="form-label mt-4">Booking date</label>
-              
-                <input onClick={()=> setOpenDate(!openDate)} type="BookingText" class="form-control" placeholder={`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`} ></input>
+         <legend>Booking Details</legend>
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="disabledTextInput">carpark</Form.Label>
+          <Form.Control id="disabledTextInput" placeholder="Disabled input" />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label htmlFor="disabledSelect">Booking date</Form.Label>
+          <Form.Control onClick={()=> setOpenDate(!openDate)} type="BookingText" placeholder={`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`} />
                 {/* <FontAwesomeIcon icon={faCalendarDays} /> */}
                 { openDate &&
                 <DateRange
@@ -52,22 +49,30 @@ const Booking = ({carparkId}) => {
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                 /> }
-            </div>
-            {/* <div class="form-group">
-            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div> */}
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Check
+            type="checkbox"
+            id="disabledFieldsetCheck"
+            label="Can't check this"
+          />
+        </Form.Group>
+
+        <Button type="submit">Submit</Button>
         </fieldset>
+    </Form>
+   
 
-            <Container>
-                <button type="submit" class="btn btn-primary">Book Now</button>
+        <Container>
+                <Button type="submit" class="btn btn-primary">Book Now </Button>
                 <small id="submitlHelp" class="form-text text-muted">Book now and pay later!</small>
+        </Container>
 
-            </Container>
-       
-        </form>
+
+
     </Container>
-    )
+    );
 }
 
 export default Booking;
