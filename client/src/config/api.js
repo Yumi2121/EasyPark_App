@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const easyparkAPI = axios.create({
     // baseURL: 'https://fateen-api-production.up.railway.app'
-    baseURL: 'http://localhost:8880/api'
+    baseURL: 'http://localhost:8800/api'
 })
 
 easyparkAPI.interceptors.request.use((req) => {

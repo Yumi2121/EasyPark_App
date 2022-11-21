@@ -1,5 +1,14 @@
 import { createContext, useReducer, useEffect  } from "react";
 
+
+// to see if localsotrage worked
+// let user = null
+// try {
+//   JSON.parse(localStorage.getItem("user"))
+// } catch {
+//   console.log('No user stored in LocalStorage')
+// }
+
 const INITIAL_STATE = {
     //  check if user exsit in localStorage already, if yes the user already login 
     user: JSON.parse(localStorage.getItem("user")) || null,

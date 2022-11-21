@@ -13,6 +13,7 @@ import CarparkDetail from "./carparkDetail/carparkDetail";
 import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
 import About from "../components/about/About";
+import Bookings from "../components/bookings/Bookings";
 
 
 
@@ -28,6 +29,8 @@ function App() {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />
+          <Route path="/bookings/" element={<Bookings />} />
+          
         </Routes>
         </main>
         <Footer />
