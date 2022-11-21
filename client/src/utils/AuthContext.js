@@ -2,7 +2,8 @@ import { createContext, useReducer, useEffect  } from "react";
 
 const INITIAL_STATE = {
     //  check if user exsit in localStorage already, if yes the user already login 
-    user: JSON.parse(localStorage.getItem("user")) || null,
+    // user: JSON.parse(localStorage.getItem("user")) || null,
+    user: null,
     loading: false,
     error: null,
     

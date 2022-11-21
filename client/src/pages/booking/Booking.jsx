@@ -10,22 +10,71 @@ import { format } from "date-fns";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import { useEffect } from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import useFetch from "../../utils/useFetch";
+
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      style={{backgroundcolor:"blue"}}
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Confirmed!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Thank you For Booking with us!</h4>
+        <p>
+          The carpark owner will be informed and reach out to you shortly!
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide} >Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 
 
+const Booking = () => {
+  const {id} = useParams();
 
-const Booking = (props) => {
-    
+  const {data, loading, error}  = useFetch(`/carparks/${id}`);
+  console.log(data)
+  
 
-    const [openDate, setOpenDate] = useState(false)
-
-    const [date, setDate] = useState([
+  const [modalShow, setModalShow] = useState(false);
+  const [openDate, setOpenDate] = useState(false)
+  
+  const [date, setDate] = useState([
         {
           startDate: new Date(),
           endDate: new Date(),
           key: 'selection'
         }
       ]);
+
+
+
+      // useEffect(() => {
+      //   if (setModalShow) {
+      //     // setTimeout for about 2 seconds then let isLoading to false
+      //     setTimeout(() => {
+      //       modalShow(false);
+      //     }, 8000);
+      //   }
+      // }, [props]);
 
 
     return (
@@ -51,28 +100,34 @@ const Booking = (props) => {
                 /> }
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        {/* <Form.Group className="mb-3">
           <Form.Check
             type="checkbox"
             id="disabledFieldsetCheck"
             label="Can't check this"
           />
-        </Form.Group>
+        </Form.Group> */}
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onClick={() => setModalShow(true)}>Book Now</Button>
+        {" "}
+        <div>
+        <small id="submitlHelp" class="form-text text-muted" >Book now and pay later!</small>
+        </div>
         </fieldset>
     </Form>
-   
-
-        <Container>
-                <Button type="submit" class="btn btn-primary">Book Now </Button>
-                <small id="submitlHelp" class="form-text text-muted">Book now and pay later!</small>
-        </Container>
 
 
+      <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+    
+        />
+    
 
     </Container>
     );
 }
+
+
 
 export default Booking;

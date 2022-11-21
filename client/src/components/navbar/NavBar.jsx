@@ -38,17 +38,8 @@ const NavbarEP = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
-                    { !user ? 
-                       (                    
-                        <Nav className="d-flex"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll>
-                            <Nav.Link href="/auth/login">Become a member</Nav.Link>
-                
-                        </Nav>
-                        )
-                        :
-                        (
+                    { user ?                         
+                    (
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
@@ -56,6 +47,16 @@ const NavbarEP = () => {
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
+                    :
+                    (                    
+                    <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
+                        <Nav.Link href="/auth/login">Become a member/LogIn</Nav.Link>
+            
+                    </Nav>
+                    )
+
                  
                     }               
                 </Navbar.Collapse>

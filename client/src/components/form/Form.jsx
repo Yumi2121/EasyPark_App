@@ -11,7 +11,7 @@ const Form = ({ option }) => {
         password: undefined,
     });
 
-    const { loading, error, dispatch } = useContext(AuthContext);
+    const { user, loading, error, dispatch } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -29,6 +29,7 @@ const Form = ({ option }) => {
             try{
                 const res = await axios.post("/auth/register", credentials);
                 dispatch({ type: "REGISTER_SUCCESS", data: res.data});
+                // JSON.parse(localStorage.setItem(user));
                 navigate("/")
             } catch(err) {
                 dispatch({type:"REGISTER_FAILURE", data:err.response.data})
