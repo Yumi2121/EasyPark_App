@@ -10,13 +10,15 @@ const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
 const cors = require('cors');
-// const port= process.env.PORT || 8000;
+
+require('dotenv').config()
+const port= process.env.PORT;
 
 
 const app = express();
 app.use(cors())
 // to make sure our MongoDB data can be read in env file
-require('dotenv').config()
+
 
 // connect MongoDB
 const connect = async () => {
@@ -71,8 +73,8 @@ app.use((err,req,res,next) => {
 });
 
 
-app.listen(8880, () => {
+app.listen(port, () => {
     connect()
     console.log("EasyPark connected to backend.")
-    // console.log(`Server is running on port: ${port}`);
+    console.log(`Server is running on port: ${port}`);
 })
