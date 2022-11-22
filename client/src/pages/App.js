@@ -9,11 +9,14 @@ import Home from "./home/Home";
 import Login from "./login/Login"
 import List from "./list/List";
 import CarparkDetail from "./carparkDetail/carparkDetail";
+import Adminpage from "./adminpage/Adminpage";
+import Bookings from "./bookings/Bookings";
+
 // import 'bootswatch/dist/morph/bootstrap.min.css';
 import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
 import About from "../components/about/About";
-import Bookings from "../components/bookings/Bookings";
+
 
 
 
@@ -30,6 +33,7 @@ function App() {
           <Route path="/carparks" element={<List />} />
           <Route path="/carparks/:id" element={<CarparkDetail />} />
           <Route path="/bookings/" element={<Bookings />} />
+          <Route path="/admin/" element={<Adminpage />} />
           
         </Routes>
         </main>

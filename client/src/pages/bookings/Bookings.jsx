@@ -1,7 +1,7 @@
 import React from "react";
 import Bookings from "../../components/bookings/Bookings"
 
-const Bookings= (booking) => {
+const History= () => {
     return (
         <>
         <div>Display User Bookings</div>
@@ -10,4 +10,4 @@ const Bookings= (booking) => {
     )
 }
 
-export default Bookings;
+export default History;
