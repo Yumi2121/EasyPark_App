@@ -25,12 +25,12 @@ const register = asyncHandler(async (req, res) => {
 
     // Hash passowrd
     const salt = bcrypt.genSaltSync(10);
-    const hashedPasseord = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create user
     const user = await User.create({
         email,
-        password: hashedPasseord,
+        password: hashedPassword,
     })
 
     if (user) {

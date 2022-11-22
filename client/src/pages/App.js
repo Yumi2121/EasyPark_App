@@ -14,6 +14,8 @@ import Footer from "../components/footer/Footer";
 import About from "../components/about/About";
 import Booking from "./booking/Booking";
 import GoogleMapComponent from "../components/googleMap/map"
+// custom the bootstrap styling
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 

@@ -7,12 +7,17 @@ const containerStyle = {
   height: '400px'
 };
 
-const center = {
-  lat: -37.81039463734432,
-  lng: 144.9657046698725
-};
+function GoogleMapComponent(props) {
+  const { lat, lng, carparks }= props
+  const center = {
+    lat: lat,
+    lng: lng
+  };
 
-function GoogleMapComponent() {
+  console.log(lat);
+  console.log(lng);
+  console.log(carparks);
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyA0E2c7oJ4ABkJK1M8fsbymmVKQnKBv9d0"
@@ -53,13 +58,14 @@ const onMarkerClick = React.useCallback(event => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={12}
+        zoom={14}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        {points.map(({ lat, lng, key, text, tooltips, url }) => {
+        {carparks.map(({ lat, lng, label, url }) => {
+
             return (
-              <Marker key={key} position={{lat:lat, lng:lng}} label={text} title={tooltips}
+              <Marker key={label} position={{lat:lat, lng:lng}} label={label} title={""}
                       onClick={onMarkerClick}
               />
             );

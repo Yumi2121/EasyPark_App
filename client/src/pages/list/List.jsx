@@ -46,11 +46,18 @@ const List = () => {
         return 0;
     });
     const filteredCarpark = sortCarpark.slice(0,3);
-
+    const mapCarpark = []
+    for (let index = 0; index < filteredCarpark.length; index ++) {
+        const item = filteredCarpark[index];
+        mapCarpark.push({"lat": item.lat, 
+                "lng": item.lng, 
+                "label": (index + 1).toString()
+            });
+    }
 
     return (
         <>
-            <GoogleMapComponent />
+            <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} />
 
             <Container className="list-session">
                 <Row className="listContainer">                

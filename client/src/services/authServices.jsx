@@ -11,7 +11,7 @@ export async function logoutUser() {
 }
 
 export async function registerUser(userInfo) {
-	const response = await easyparkAPI.post('/auth/register', userInfo);
+	const response = await easyparkAPI.post('/users/register', userInfo);
 	console.log('Got new user back from server', response);
 	return response.data;
 }

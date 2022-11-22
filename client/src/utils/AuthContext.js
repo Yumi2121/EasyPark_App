@@ -5,8 +5,7 @@ const INITIAL_STATE = {
     // user: JSON.parse(localStorage.getItem("user")) || null,
     user: null,
     loading: false,
-    error: null,
-    
+    error: null, 
 }
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -21,9 +20,9 @@ const AuthReducer = (state, action) => {
         };
         case "LOGIN_SUCCESS":
             return {
-                user: action.paylaod,
+                user: action.payload,
                 loading: false,
-                error: null,
+                error: null,   
         };
         case "LOGIN_FAILURE":
             return {
