@@ -20,6 +20,6 @@ router.delete("/:id", verifyUser, deleteBooking);
 router.get("/:id", verifyUser, getBooking);
 
 // read all bookings
-router.get("/", verifyUser, getBookings); //change this back to verifyAdmin once api is fixed
+router.get("/", getBookings); //change this back to verifyAdmin once api is fixed
 
 module.exports = router;

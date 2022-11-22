@@ -1,7 +1,7 @@
 import React from "react";
-import Booking from "../../components/bookings/Bookings"
+import Bookings from "../../components/bookings/Bookings"
 
-const Bookings= (bookings) => {
+const Bookings= (booking) => {
     return (
         <>
         <div>Display User Bookings</div>

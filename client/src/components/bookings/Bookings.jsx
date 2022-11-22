@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 
 
 const Bookings = () => {
-    const {data, loading, error, reFetch }  = useFetch("/bookings")
+    const {data, loading, error, reFetch }  = useFetch("/api/bookings")
     console.log(data)
 
     //filter data by user:id & authcontect
@@ -17,7 +17,8 @@ const Bookings = () => {
     return bookingdetails.map((bookings, i) => (
       <div key={i} className="bookingdetails_display">
         <h3>{bookings.carpark_name}</h3>
-        <p>{bookings.booking_date}</p>
+        <p>{bookings.start_booking_date}</p>
+        <p>{bookings.end_booking_date}</p>
       </div>
     ));
   };
