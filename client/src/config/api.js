@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const easyparkAPI = axios.create({
     // baseURL: 'https://fateen-api-production.up.railway.app'
-    baseURL: 'http://localhost:8800/api'
+    baseURL: 'http://localhost:27017/api'
 })
 
 easyparkAPI.interceptors.request.use((req) => {
@@ -13,7 +13,6 @@ easyparkAPI.interceptors.request.use((req) => {
         req.headers["Authorization"] = `Bearer ${token}`;
     }
     return req;
-
 })
 
 export default easyparkAPI;

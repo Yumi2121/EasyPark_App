@@ -1,7 +1,7 @@
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../utils/AuthContext";
-import { useFetch } from "../../utils/useFetch";
+import { getBookings } from "../../services/bookingServices"
+import { useEffect, useState } from "react";
+import { useGlobalState } from "../../utils/StateContext";
 
 const MyBookings = () => {
 
@@ -9,10 +9,20 @@ const MyBookings = () => {
     // id = user.data._id
     id = "637b1ee778aab202de539826"
 
+    const { store, dispatch } = useGlobalState();
+    const [booked, setBooked] = useState();
+    const userId = user.
+
+    useEffect(() => {
+        if (!user) {
+            return;
+        }
+        async function fetchBookings() {
+            let userBookings = await getBookings();
+        }
+    })
 
 
-  const {data }  = useFetch(`/api/bookings/${parseInt(id)}/all`);
-    console.log(data)
 
   return (
     <>
