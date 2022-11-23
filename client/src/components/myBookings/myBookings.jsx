@@ -13,6 +13,7 @@ const MyBookings = () => {
     const [booked, setBooked] = useState();
     const userId = user.
 
+    // try to use useGlobal here
     useEffect(() => {
         if (!user) {
             return;
