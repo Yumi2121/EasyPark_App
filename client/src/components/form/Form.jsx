@@ -6,9 +6,8 @@ import { AuthContext } from "../../utils/AuthContext";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
-        email: undefined,
-        password: undefined,
-        token: undefined,
+        email: "",
+        password: "",
     });
 
     const { user, loading, error, dispatch } = useContext(AuthContext);
@@ -22,13 +21,19 @@ const Form = ({ option }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(credentials) //test to see if credentials were being stored
+        // verify the email and password
+
+
+
+        // console.log(credentials) //test to see if credentials were being stored
 
         const SignUp = async () => {
             dispatch({type:"REGISTER_START"})
             try{
                 const res = await axios.post("/api/users/register", credentials);
-                dispatch({ type: "REGISTER_SUCCESS", payload: res.data.details}); 
+                localStorage.setItem('userLogin', JSON.stringify(res))
+                console.log(res)
+                dispatch({ type: "REGISTER_SUCCESS", data: res.data}); 
                 navigate("/")
             } catch(err) {
                 console.log("Error registering user", err);
@@ -39,6 +44,8 @@ const Form = ({ option }) => {
             dispatch({type:"LOGIN_START"})
             try{
                 const res = await axios.post("/api/users/login", credentials);
+            
+                localStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")
             }catch(err) {

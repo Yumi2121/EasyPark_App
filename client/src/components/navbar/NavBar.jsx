@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -14,10 +14,10 @@ const NavbarEP = () => {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { dispatch } = useContext(AuthContext);
-
-    // console.log(user)
+    console.log(user)
 
     const handleLogout = () => {
+            localStorage.removeItem("userLogin")
             dispatch({ type: "LOGOUT" });
             navigate("/")
         }
@@ -43,7 +43,7 @@ const NavbarEP = () => {
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        <Nav.Link >{user.details.email}</Nav.Link>
+                        <Nav.Link >{user.email}</Nav.Link>
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
