@@ -7,10 +7,11 @@ import { useLocation } from "react-router-dom";
 // import SearchItem from "../../components/searchItem/SearchItem";
 import "./list.css";
 import useFetch from '../../utils/useFetch';
-import SimpleMap from '../../components/googleMap/googleMap';
-// import Map from '../../components/googleMap/reactGoogleMaps';
 import { getCarparks } from '../../services/carparkServices';
 import Card from 'react-bootstrap/Card';
+import GoogleMapComponent from "../../components/googleMap/map";
+import { Navigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 
 // const List = () => {
@@ -25,22 +26,13 @@ function distance(lat1, long1, lat2, long2) {
     return Math.sqrt(Math.pow(lat2-lat1, 2) + Math.pow(long2-long1, 2));
 }
 
-// function myMap() {
-//     var mapProp= {
-//         center:new google.maps.LatLng(51.508742,-0.120850),
-//     zoom:5,
-//     };
-//     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-// }
-function myMap() {
 
-}
 
 const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
   
-    const {data, loading, error, reFetch }  = useFetch("/carparks");
+    const {data, loading, error, reFetch }  = useFetch("/api/carparks");
     console.log(data)
 
     // Calculate the distance by filter the top 3 filtered carparks close to destination
@@ -54,15 +46,18 @@ const List = () => {
         return 0;
     });
     const filteredCarpark = sortCarpark.slice(0,3);
+    const mapCarpark = []
+    for (let index = 0; index < filteredCarpark.length; index ++) {
+        const item = filteredCarpark[index];
+        mapCarpark.push({"lat": item.lat, 
+                "lng": item.lng, 
+                "label": (index + 1).toString()
+            });
+    }
 
     return (
         <>
-            {/* <div id="googleMap" style="width:200px;height:200px;"></div>
-
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiKc4HxX5G7EfneIZBN_Hlk2_luoT_yvo&callback=myMap"></script> */}
-
-            {/* <img src="https://cdn.cnn.com/cnnnext/dam/assets/221118095447-02-ukraine-power-grid-winter-large-tease.jpg"></img> */}
-
+            <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} />
 
             <Container className="list-session">
                 <Row className="listContainer">                
@@ -81,11 +76,11 @@ const List = () => {
                                         <Card.Body>
                                             <Card.Title>{item.carpark_name}</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">{item.carpark_name}</Card.Subtitle>
-                                            <Card.Text>
-                        
-                                            </Card.Text>
-                                            <Card.Link href="#">Book</Card.Link>
-                                            {/* <Button onClick={handleClick} variant="primary">Daily from $6</Button> */}
+                                            {/* <Card.Text> */}
+                                             <p style={{color: "black"}}> {item.address} </p>
+                                            {/* </Card.Text> */}
+                                            <Card.Link href={`/carparks/${item._id}`} >Book</Card.Link>
+                                            <Button variant="primary">Daily from $6</Button>
                                             </Card.Body>
                                         </Card>
                                     </div>

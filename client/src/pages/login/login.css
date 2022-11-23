@@ -5,7 +5,7 @@
   
   body {
     font-family: Nunito, Roboto, Arial, sans-serif;
-    background: #0099cc;
+    background: black;
     height: 100vh; }
   
   #Login {
@@ -14,8 +14,9 @@
     justify-content: center; }
   
   .container {
+    font-family: Nunito, Roboto, Arial, sans-serif;
     text-align: center;
-    color: #fff;
+    color: black;
     margin-top: 100px; }
     .container > header {
       font-size: 1.1rem;
@@ -82,7 +83,7 @@
     .account-form-fields.forgot {
       max-height: 61px; }
     .account-form-fields > input {
-      border: 0;
+      border: 1px solid black;
       margin-bottom: 10px;
       padding: 15px;
       font-size: 1rem;
@@ -99,6 +100,7 @@
         outline: none; }
   
   .btn-submit-form {
+    margin-top: 20px;
     border: 0;
     appearance: none;
     -webkit-appearance: none;

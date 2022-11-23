@@ -35,8 +35,10 @@ const deleteCarpark = async (req,res,next) => {
 };
 
 const getCarpark = async (req,res,next) => {
+    console.log("api called to get carparks")
     try {
         const carpark = await Carpark.findById(req.params.id);
+        
         res.status(200).json(carpark);
     }catch(err) {
         next(err);

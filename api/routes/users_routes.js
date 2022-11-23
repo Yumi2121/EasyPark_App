@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
-const { updateUser, deleteUser, getUser, getUsers } = require('../controllers/user_controller');
-const { verifyToken, verifyUser, verifyAdmin } = require('../utils/verifyToken');
+const { register, login, updateUser, deleteUser, getUser, getAllUsers } = require('../controllers/user_controller');
+const { verifyUser, verifyAdmin } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
@@ -17,18 +17,20 @@ const router = express.Router();
 //     res.send("hello admin, you are loged in and you can delete any acounts.")
 // });
 
+// user register
+router.post("/register", register);
+// user login
+router.post("/login", login);
 
-// update users
-router.put("/:id", verifyUser, updateUser);
-
+//get all users
+router.get("/", verifyUser, verifyAdmin, getAllUsers);
 // delete
-router.delete("/:id", verifyUser, deleteUser);
+router.delete("/:id", verifyUser, verifyAdmin, deleteUser);
 
-// get one user
-router.get("/:id", verifyUser, getUser);
 
-// read all users
-router.get("/", verifyAdmin, getUsers);
-
+router
+    .route("/myProfile")
+    .get(verifyUser, getUser)
+    .put(verifyUser, updateUser)
 
 module.exports = router;

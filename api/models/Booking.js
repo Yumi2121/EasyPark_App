@@ -12,13 +12,14 @@ const BookingSchema = new Schema({
       type: String,
 		  required: true,
     },
-    booking_date: {
+    start_booking_date: {
       type: Date,
       required: true,
 	  },
-    unavailableDates: {
-      type: [Date]
-	  }
+    end_booking_date: {
+      type: Date,
+      required: true,
+	  },
 },
 {
   timestamps: true,
