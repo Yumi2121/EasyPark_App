@@ -57,7 +57,7 @@ const List = () => {
 
     return (
         <>
-            <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} />
+            {/* <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} /> */}
 
             <Container className="list-session">
                 <Row className="listContainer">                

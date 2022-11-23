@@ -18,6 +18,7 @@ import Booking from "./booking/Booking";
 import GoogleMapComponent from "../components/googleMap/map"
 // custom the bootstrap styling
 import 'bootstrap/dist/css/bootstrap.min.css'
+import SuccessBooking from "../components/success/success";
 
 
 
@@ -38,6 +39,8 @@ function App() {
           <Route path="/admin/" element={<Adminpage />} />
           <Route path="/carparks/:id" element={<Booking />} />
           <Route path="/map" element={<GoogleMapComponent />} />
+          <Route path="success" element={<SuccessBooking />} />
+
 
         </Routes>
         </main>
