@@ -20,8 +20,12 @@ const MyBookings = () => {
         }
         async function fetchBookings() {
             let userBookings = await getBookings();
+            dispatch({ type: "setBookings", data: userBookings });
+            setBooked(userBookings);
         }
     })
+
+
 
 
 
