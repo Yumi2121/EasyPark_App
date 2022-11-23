@@ -6,20 +6,19 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const jwt = require('jsonwebtoken')
 // import routes
-const authRouter = require('./routes/auth_routes');
 const usersRouter = require('./routes/users_routes');
 const bookingsRouter = require('./routes/bookings_routes');
 const carparksRouter = require('./routes/carparks_routes');
 const cors = require('cors');
-const port= process.env.PORT || 8000;
 
-
+require('dotenv').config()
+const port= process.env.PORT;
 
 
 const app = express();
 app.use(cors())
 // to make sure our MongoDB data can be read in env file
-require('dotenv').config()
+
 
 // connect MongoDB
 const connect = async () => {
@@ -35,29 +34,29 @@ mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected!!");
 });
 
-function authenticationMiddleware(req, res, next) {
-    const token = req.cookies["access_token"]
+// function authenticationMiddleware(req, res, next) {
+//     const token = req.cookies["access_token"]
 
-    jwt.verify(token, process.env.JWT_key, (err, decoded) => {
-        if(!err){
-            req.userId = decoded.id
-            req.isAdmin = decoded.isAdmin
-        }
-        next()
-    })
-}
+//     jwt.verify(token, process.env.JWT_key, (err, decoded) => {
+//         if(!err){
+//             req.userId = decoded.id
+//             req.isAdmin = decoded.isAdmin
+//         }
+//         next()
+//     })
+// }
 
 // middlewares
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(authenticationMiddleware)
+// app.use(authenticationMiddleware)
 // app.use(express.json());
 
 app.use(morgan("[:date[iso]] Started :method :url for :remote-addr", { immediate: true }))
 app.use(morgan("[:date[iso]] Completed :status in :response-time ms"))
 
-app.use('/api/auth', authRouter);
+
 app.use('/api/users', usersRouter);
 app.use('/api/bookings', bookingsRouter);
 app.use('/api/carparks', carparksRouter);

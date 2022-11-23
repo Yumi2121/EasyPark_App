@@ -2,9 +2,8 @@ const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 
-
-const { createBooking, updateBooking, deleteBooking, getBooking, getBookings} = require('../controllers/booking_controller');
-const { verifyUser, verifyAdmin } = require('../utils/verifyToken');
+const {  createBooking, updateBooking, deleteBookingById, getBookings, getBookingById, getBookingByUserId } = require('../controllers/booking_controller');
+const { verifyUser, verifyAdmin } = require('../middleware/authMiddleware');
 
 
 // create bookings
@@ -13,13 +12,16 @@ router.post("/", verifyUser, createBooking);
 // update booking
 router.put("/:id", verifyUser, updateBooking);
 
-// delete
-router.delete("/:id", verifyUser, deleteBooking);
-
 // read the selected booking
-router.get("/:id", verifyUser, getBooking);
+router.get("/:id", verifyUser, getBookingById);
+// delete
+router.delete("/:id", verifyUser, deleteBookingById);
 
-// read all bookings
-router.get("/", verifyAdmin, getBookings);
+
+// read all bookings with all users
+router.get("/all", verifyAdmin, getBookings);
+
+// get all bookings under specific user
+router.get("/:userId/all", verifyUser, getBookingByUserId);
 
 module.exports = router;

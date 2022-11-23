@@ -1,17 +1,16 @@
 import React from "react";
 import axios from "axios";
-import { useContext } from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/AuthContext";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
-        email: undefined,
-        password: undefined,
+        email: "",
+        password: "",
     });
 
-    const { loading, error, dispatch } = useContext(AuthContext);
+    const { user, loading, error, dispatch } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -22,23 +21,31 @@ const Form = ({ option }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(credentials) //test to see if credentials were being stored
+        // verify the email and password
+
+
+
+        // console.log(credentials) //test to see if credentials were being stored
 
         const SignUp = async () => {
             dispatch({type:"REGISTER_START"})
             try{
-                const res = await axios.post("/auth/register", credentials);
-                dispatch({ type: "REGISTER_SUCCESS", data: res.data});
+                const res = await axios.post("/api/users/register", credentials);
+                localStorage.setItem('userLogin', JSON.stringify(res))
+                console.log(res)
+                dispatch({ type: "REGISTER_SUCCESS", data: res.data}); 
                 navigate("/")
             } catch(err) {
-                dispatch({type:"REGISTER_FAILURE", data:err.response.data})
+                console.log("Error registering user", err);
             }
         }
 
         const SignIn = async () => {
             dispatch({type:"LOGIN_START"})
             try{
-                const res = await axios.post("/auth/login", credentials);
+                const res = await axios.post("/api/users/login", credentials);
+            
+                localStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")
             }catch(err) {
@@ -48,7 +55,7 @@ const Form = ({ option }) => {
        
         if(option === 1) {
             SignIn()
-        } else {
+        } else { 
             SignUp()
         }
 
