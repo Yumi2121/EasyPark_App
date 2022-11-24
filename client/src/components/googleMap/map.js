@@ -1,8 +1,8 @@
 import React from 'react'
 import { GoogleMap, Marker,  useJsApiLoader } from '@react-google-maps/api';
 
-require('dotenv').config()
-const Gkey= process.env.googleMapsApiKey;
+// require('dotenv').config()
+// const Gkey= process.env.googleMapsApiKey;
 
 const containerStyle = {
   width: '400px',
@@ -22,7 +22,7 @@ function GoogleMapComponent(props) {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: Gkey,
+    googleMapsApiKey: 989834098,
   })
 
   const [map, setMap] = React.useState(null)
@@ -71,7 +71,7 @@ const onMarkerClick = React.useCallback(event => {
                       onClick={onMarkerClick}
               />
             );
-          })}
+          })
         }
         <Marker position={{lat:center.lat, lng:center.lng}} label={""} title={"Destination"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}/>
         <></>
