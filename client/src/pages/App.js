@@ -32,9 +32,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
-
-          <Route path="/bookings/" element={<Bookings />} />
-          <Route path="/admin/" element={<Adminpage />} />
           <Route path="/carparks/:id" element={<Booking />} />
           <Route path="/map" element={<GoogleMapComponent />} />
           <Route path="success" element={<SuccessBooking />} />
