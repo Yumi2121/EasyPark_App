@@ -15,4 +15,12 @@ easyparkAPI.interceptors.request.use((req) => {
     return req;
 })
 
+easyparkAPI.interceptors.response.use((res) => {
+    const token = res.data.token
+    if(token) {
+        sessionStorage.setItem('token', token)
+    }
+    return res;
+})
+
 export default easyparkAPI;
