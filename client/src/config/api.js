@@ -13,7 +13,14 @@ easyparkAPI.interceptors.request.use((req) => {
         req.headers["Authorization"] = `Bearer ${token}`;
     }
     return req;
+})
 
+easyparkAPI.interceptors.response.use((res) => {
+    const token = res.data.token
+    if(token) {
+        sessionStorage.setItem('token', token)
+    }
+    return res;
 })
 
 export default easyparkAPI;

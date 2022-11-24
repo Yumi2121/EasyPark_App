@@ -6,6 +6,9 @@ const {  createBooking, updateBooking, deleteBookingById, getBookings, getBookin
 const { verifyUser, verifyAdmin } = require('../middleware/authMiddleware');
 
 
+// read all bookings with all users
+router.get("/", verifyUser, verifyAdmin, getBookings);
+
 // create bookings
 router.post("/", verifyUser, createBooking);
 
@@ -22,6 +25,6 @@ router.delete("/:id", verifyUser, deleteBookingById);
 router.get("/all", verifyAdmin, getBookings);
 
 // get all bookings under specific user
-router.get("/:userId/all", verifyUser, getBookingByUserId);
+router.get("/user/:userId", verifyUser, getBookingByUserId);
 
 module.exports = router;

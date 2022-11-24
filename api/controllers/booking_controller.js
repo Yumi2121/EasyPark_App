@@ -9,7 +9,7 @@ const asyncHandler = require('express-async-handler')
 const getBookings = asyncHandler(async (req, res) => {
     const bookings = await Booking.find( {} );
     if (bookings && bookings.length !== 0) {
-    res.status(200).json(bookings);
+      res.status(200).json(bookings);
     } else {
         res.status(404);
         throw new Error("No bookings found");

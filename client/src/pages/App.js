@@ -8,6 +8,7 @@ import {
 import Home from "./home/Home";
 import Login from "./login/Login"
 import List from "./list/List";
+import Admin from "./admin/Admin"
 // import 'bootswatch/dist/morph/bootstrap.min.css';
 import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
@@ -31,9 +32,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/carparks" element={<List />} />
+
+          <Route path="/bookings/" element={<Bookings />} />
+          <Route path="/admin/" element={<Adminpage />} />
           <Route path="/carparks/:id" element={<Booking />} />
           <Route path="/map" element={<GoogleMapComponent />} />
           <Route path="success" element={<SuccessBooking />} />
+          <Route path="/admin" element={<Admin />} />
+
 
 
         </Routes>

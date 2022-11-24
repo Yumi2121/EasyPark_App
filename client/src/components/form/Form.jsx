@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import easyparkAPI from '../../config/api'
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/AuthContext";
@@ -29,7 +29,7 @@ const Form = ({ option }) => {
         const SignUp = async () => {
             dispatch({type:"REGISTER_START"})
             try{
-                const res = await axios.post("/api/users/register", credentials);
+                const res = await easyparkAPI.post("/users/register", credentials);
                 localStorage.setItem('userLogin', JSON.stringify(res))
                 console.log(res)
                 dispatch({ type: "REGISTER_SUCCESS", data: res.data}); 
@@ -42,7 +42,7 @@ const Form = ({ option }) => {
         const SignIn = async () => {
             dispatch({type:"LOGIN_START"})
             try{
-                const res = await axios.post("/api/users/login", credentials);
+                const res = await easyparkAPI.post("/users/login", credentials);
             
                 localStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
