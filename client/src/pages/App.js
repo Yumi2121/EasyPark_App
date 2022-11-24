@@ -21,7 +21,6 @@ import SuccessBooking from "../components/success/success";
 
 
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +39,7 @@ function App() {
           <Route path="/map" element={<GoogleMapComponent />} />
           <Route path="success" element={<SuccessBooking />} />
           <Route path="/admin" element={<Admin />} />
+
 
 
         </Routes>
