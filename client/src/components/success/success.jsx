@@ -27,6 +27,8 @@ function SuccessBooking() {
         <hr />
         <div>
           <Button href="/" variant="outline-primary">Back to Home</Button>
+          {" "}
+          <Button href="/" variant="outline-primary">View my booking</Button>
         </div>
       </Container>
   );

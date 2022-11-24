@@ -2,6 +2,8 @@ import React from "react";
 import { getBookings } from "../../services/bookingServices"
 import { useEffect, useState } from "react";
 import { useGlobalState } from "../../utils/StateContext";
+import Card from 'react-bootstrap/Card';
+
 
 const MyBookings = () => {
 
@@ -27,13 +29,28 @@ const MyBookings = () => {
 
 
 
+// this is to display the information obtained above. Feel free to change
+    return bookingdetails.map((bookings, i) => (
+
+      <div key={i} className="bookingdetails">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{bookings.carpark_name}</h5>
+                <p class="card-text"> Initial Parking Date: {bookings.start_booking_date}</p>
+                <p class="card-text"> Parking End Date: {bookings.end_booking_date}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-  return (
-    <>
 
-    </>
-  );
+
+
+    ));
 };
 
 export default MyBookings;
