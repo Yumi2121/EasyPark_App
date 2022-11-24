@@ -3,28 +3,27 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/AuthContext";
+import { useGlobalState } from "../../utils/StateContext";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
         email: "",
         password: "",
+
     });
 
     const { user, loading, error, dispatch } = useContext(AuthContext);
-
     const navigate = useNavigate();
 
+    // handle the form inputs change
     const handleChange = (e) => {
         setCredentials(prev=> ({ ...prev, [e.target.name]: e.target.value}));
     };
 
+  // the logic after click the submit button
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // verify the email and password
-
-
-
+ 
         // console.log(credentials) //test to see if credentials were being stored
 
         const SignUp = async () => {
@@ -52,14 +51,14 @@ const Form = ({ option }) => {
                 dispatch({type:"LOGIN_FAILURE", data:err.response.data})
             }
         }
-       
-        if(option === 1) {
+
+        if (option === 1) {
             SignIn()
         } else { 
             SignUp()
-        }
+        };
 
-    }
+    };
 
 
     return (
