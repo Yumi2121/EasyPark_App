@@ -28,7 +28,7 @@ const SearchItem = (item) => {
 
     return (
         <>
-        <Card style={{ width: '18rem' height: '5rem' }}>
+        <Card style={{ width: '18rem', height: '5rem' }}>
             <Card.Body>
                 <Card.Title>name</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">address</Card.Subtitle>

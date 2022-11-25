@@ -23,7 +23,7 @@ const NavbarEP = () => {
         }
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" fixed='top'>
             <Container fluid>
                 {/* <img src="./logo.png" alt="easypark-logo" height={60} width={30} /> */}
                 <Navbar.Brand href="/">EasyPark</Navbar.Brand>
