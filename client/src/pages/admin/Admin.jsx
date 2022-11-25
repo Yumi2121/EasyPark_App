@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-// import Admin from "../../components/admin/Admin";
+import Admin from "../../components/admin/Admin";
 import "./Admin.css";
 import {Outlet} from "react-router-dom";
 
