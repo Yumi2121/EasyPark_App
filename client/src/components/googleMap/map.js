@@ -22,7 +22,7 @@ function GoogleMapComponent(props) {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: '',
+    googleMapsApiKey: 'AIzaSyANZcSN5o5-bLe3YkOogiTBzn2N9mlBtPw',
   })
 
   const [map, setMap] = React.useState(null)
