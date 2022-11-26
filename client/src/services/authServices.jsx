@@ -16,25 +16,25 @@ export async function registerUser(userInfo) {
 	return response.data;
 }
 
-// Get loggedInUser from localStorage
+// Get loggedInUser from sessionStorage
 export function getLoggedInUser() {
-	return localStorage.getItem('loggedInUser');
+	return sessionStorage.getItem('loggedInUser');
 }
 export function getAdminUser() {
-	return localStorage.getItem('adminUser');
+	return sessionStorage.getItem('adminUser');
 }
 
 // Store loggedInUser username in local storage
 export function setLoggedInUser(user) {
 	console.log('setting user: ', user);
 	user
-		? localStorage.setItem('loggedInUser', user)
-		: localStorage.removeItem('loggedInUser');
+		? sessionStorage.setItem('loggedInUser', user)
+		: sessionStorage.removeItem('loggedInUser');
 }
 
 export function setAdminUser(admin) {
 	console.log('setting admin: ', admin);
 	admin
-		? localStorage.setItem('adminUser', admin)
-		: localStorage.removeItem('adminUser');
+		? sessionStorage.setItem('adminUser', admin)
+		: sessionStorage.removeItem('adminUser');
 }

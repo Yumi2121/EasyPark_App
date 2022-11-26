@@ -30,7 +30,7 @@ const Form = ({ option }) => {
             dispatch({type:"REGISTER_START"})
             try{
                 const res = await easyparkAPI.post("/users/register", credentials);
-                localStorage.setItem('userLogin', JSON.stringify(res))
+                sessionStorage.setItem('userLogin', JSON.stringify(res))
                 console.log(res)
                 dispatch({ type: "REGISTER_SUCCESS", data: res.data}); 
                 navigate("/")
@@ -44,7 +44,7 @@ const Form = ({ option }) => {
             try{
                 const res = await easyparkAPI.post("/users/login", credentials);
             
-                localStorage.setItem('userLogin', JSON.stringify(res))
+                sessionStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")
             }catch(err) {

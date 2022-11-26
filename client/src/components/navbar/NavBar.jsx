@@ -8,16 +8,13 @@ import { AuthContext } from '../../utils/AuthContext';
 import { useNavigate } from "react-router-dom";
 
 
-
-
 const NavbarEP = () => {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { dispatch } = useContext(AuthContext);
-    console.log(user)
 
     const handleLogout = () => {
-            localStorage.removeItem("userLogin")
+            sessionStorage.removeItem("userLogin")
             dispatch({ type: "LOGOUT" });
             navigate("/")
         }
@@ -38,16 +35,16 @@ const NavbarEP = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
-                    { user ?                         
+                    { user && !user?.isAdmin ?                         
                     (
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        <Nav.Link >{user.data?.email}</Nav.Link>
+                        <Nav.Link >{user?.email ?? user?.data?.email}</Nav.Link>
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
-                    :
+                    : !user ? 
                     (                    
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
@@ -55,10 +52,18 @@ const NavbarEP = () => {
                         <Nav.Link href="/auth/login">Become a member/LogIn</Nav.Link>
             
                     </Nav>
-                    )
+                    ): <></>}
 
-                 
-                    }               
+                    {user && user?.isAdmin && (
+                        <Nav className="d-flex"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll>
+                        <Nav.Link href="/admin">Admin: {user?.email ?? user?.data?.email}</Nav.Link>
+                        <Nav.Link onClick={handleLogout} >log out</Nav.Link>
+                    </Nav>
+                    )}
+
+                           
                 </Navbar.Collapse>
             </Container>
     </Navbar>
