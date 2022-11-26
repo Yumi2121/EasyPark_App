@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import { React, useState, useEffect, useReducer } from "react";
+import { StateContext } from "../utils/StateContext";
+import reducer from "../utils/StateReducer";
 import {
   BrowserRouter,
   Routes,
@@ -24,28 +26,38 @@ import AllUsers from "../components/admin/AllUsers";
 
 
 function App() {
+  const initialState = {
+    bookings: [],
+    loggedInUser: sessionStorage.getItem("user") || null,
+    auth: sessionStorage.getItem("token") || null,
+  }
+
+  const [store, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <NavbarEP />
-        <main style={{marginTop: '56px'}}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="auth/login" element={<Login />} />
-            <Route path="carparks" element={<List />} />
-            <Route path="carparks/:id" element={<Booking />} />
-            <Route path="map" element={<GoogleMapComponent />} />
-            <Route path="success" element={<SuccessBooking />} />
-            <Route path="admin" element={<Admin />} >
-              <Route path="bookings" element={<AllBookingUsers />} />
-              <Route path="users" element={<AllUsers />} />
-            </Route>
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <StateContext.Provider value={{ store, dispatch }}>
+      <BrowserRouter>
+        <div className="App">
+          <NavbarEP />
+          <main style={{marginTop: '56px'}}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="auth/login" element={<Login />} />
+              <Route path="carparks" element={<List />} />
+              <Route path="carparks/:id" element={<Booking />} />
+              <Route path="map" element={<GoogleMapComponent />} />
+              <Route path="success" element={<SuccessBooking />} />
+              <Route path="admin" element={<Admin />} >
+                <Route path="bookings" element={<AllBookingUsers />} />
+                <Route path="users" element={<AllUsers />} />
+              </Route>
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </StateContext.Provider>
   );
 }
 

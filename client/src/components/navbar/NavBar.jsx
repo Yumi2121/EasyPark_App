@@ -6,20 +6,28 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { AuthContext } from '../../utils/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { useGlobalState } from '../../utils/StateContext';
+import { getLoggedInUser, logoutUser } from '../../services/authServices';
 
 
+export default function NavbarEP() {
+    const navigate = useNavigate();
+    // const { user } = useContext(AuthContext);
+    // const { dispatch } = useContext(AuthContext);
+    // console.log(user)
 
+    const {store, dispatch} = useGlobalState();
+    const { loggedInUser } = store;
 
-const NavbarEP = () => {
-    let navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-    const { dispatch } = useContext(AuthContext);
-    console.log(user)
-
-    const handleLogout = () => {
-            localStorage.removeItem("userLogin")
-            dispatch({ type: "LOGOUT" });
-            navigate("/")
+    function handleLogout(e) {
+        e.preventDefault();
+        logoutUser()
+        .then(() => {
+            dispatch({type: "setLoggedInUser", data: null});
+            dispatch({type: "setAdminUser", data: false});
+            dispatch({type: "setToken", data: null});
+        })  
+        navigate("/")
         }
 
     return (
@@ -38,12 +46,12 @@ const NavbarEP = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
-                    { user ?                         
+                    { loggedInUser ?                         
                     (
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        <Nav.Link >{user.data?.email}</Nav.Link>
+                        <Nav.Link >{loggedInUser}</Nav.Link>
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
@@ -53,16 +61,22 @@ const NavbarEP = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
                         <Nav.Link href="/auth/login">Become a member/LogIn</Nav.Link>
-            
+        
                     </Nav>
-                    )
+                    )}    
 
-                 
-                    }               
+                    { loggedInUser && getLoggedInUser.isAdmin && (
+                         <Nav className="d-flex"
+                         style={{ maxHeight: '100px' }}
+                         navbarScroll>
+                             <Nav.Link href="/admin">Admin: {loggedInUser}</Nav.Link>
+                             <Nav.Link onClick={handleLogout} >log out</Nav.Link>
+                         </Nav>
+                    )
+}
+
                 </Navbar.Collapse>
             </Container>
     </Navbar>
  );
 }
-
-export default NavbarEP;

@@ -51,13 +51,20 @@ export default function reducer(state, action) {
         return {
           ...state,
           booking: [updatedBooking, ...otherBookings],
-        };
+        }
       }
       //   when true it sets loggedInUser state with the new values
       case "setLoggedInUser": {
         return {
           ...state,
           loggedInUser: action.data,
+        }
+      }
+
+      case "setAdminUser": {
+        return {
+          ...state,
+          adminUser: action.data,
         };
       }
       //   when true it sets Token state with the new values
@@ -70,7 +77,6 @@ export default function reducer(state, action) {
           },
         };
       }
-      default:
-        return state;
+      default: return state;
     }
   }

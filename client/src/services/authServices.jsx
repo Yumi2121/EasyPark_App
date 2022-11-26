@@ -1,13 +1,14 @@
 import easyparkAPI from "../config/api";
 
 export async function loginUser(userData) {
-	const response = await easyparkAPI.post('/auth/login', userData);
+	const response = await easyparkAPI.post('/users/login', userData);
 	console.log('User data received: ', response);
 	return response.data;
 }
 
 export async function logoutUser() {
-	return easyparkAPI.get('/auth/logout');
+	sessionStorage.clear();
+	return "logged out."
 }
 
 export async function registerUser(userInfo) {
