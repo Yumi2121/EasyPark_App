@@ -20,9 +20,8 @@ router.get("/:id", verifyUser, getBookingById);
 // delete
 router.delete("/:id", verifyUser, deleteBookingById);
 
-
 // read all bookings with all users
-router.get("/all", verifyAdmin, getBookings);
+router.get("/all", verifyUser, verifyAdmin, getBookings);
 
 // get all bookings under specific user
 router.get("/user/:userId", verifyUser, getBookingByUserId);

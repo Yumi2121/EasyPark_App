@@ -1,30 +1,40 @@
-import React from "react";
-import useFetch from '../../utils/useFetch';
+import React from "react"
+import useFetch from '../../utils/useFetch'
 import moment from 'moment'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
+import easyparkAPI from '../../config/api'
 
 const AllBookingUsers = () => {
-    const {data: bookings}  = useFetch("/bookings")
-    console.log(bookings)
- 
+  const {data: bookings, reFetch: reFetchBookings}  = useFetch("/bookings")
+  console.log(bookings)
 
-    const {data: users} = useFetch("/users")
-    console.log(users)
+  const {data: users} = useFetch("/users")
+  console.log(users)
 
-    function getUserEmail(id) {
-      return users.find(user => user._id === id)?.email
-    }
+  const handleClick = (bookingId) => {
+    easyparkAPI.delete(`/bookings/${bookingId}`)
+    .then(() => reFetchBookings())
+    .catch(() => console.log('oops something went wrong'))
+  }
 
-    if(!bookings && !users) return <></>
+  function getUserEmail(id) {
+    return users.find(user => user._id === id)?.email
+  }
 
-    return bookings.map((booking, i) => (
-      <div key={i} className="bookingdetails_display">
-        <h4>{booking.carpark_name}</h4>
-        <p>User: {getUserEmail(booking.user)}</p>
-        <p>Duration: {moment(booking.start_booking_date).format("DD/MM/YYYY")} to {moment(booking.end_booking_date).format("DD/MM/YYYY")}</p>
+  if(!bookings && !users) return <></>
 
-      </div>
-    ));
-  };
+  return bookings.map((booking, i) => (
+    <Card style={{ height: '13rem', width: '40rem'}}>
+      <Card.Body key={i} className="bookingdetails_display">
+        <Card.Title>{booking.carpark_name}</Card.Title>
+        <Card.Text>User: {getUserEmail(booking.user)}</Card.Text>
+        <Card.Text>Duration: {moment(booking.start_booking_date).format("DD/MM/YYYY")} to {moment(booking.end_booking_date).format("DD/MM/YYYY")}</Card.Text>
+        <Button onClick={() => handleClick(booking._id)} variant="primary">Delete</Button>
+      </Card.Body>
+    </Card>
+  ))
+}
 
 export default AllBookingUsers;

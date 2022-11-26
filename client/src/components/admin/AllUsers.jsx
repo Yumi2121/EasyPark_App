@@ -1,24 +1,34 @@
 import React from "react";
 import useFetch from '../../utils/useFetch';
 import moment from 'moment';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button'
 
+import easyparkAPI from '../../config/api'
 
 const AllUsers = () => {
-    const {data}  = useFetch("/users")
+    const {data, reFetch: reFetchUsers}  = useFetch("/users")
     console.log(data)
+
+
+    const handleClick = (usersId) => {
+      easyparkAPI.delete(`/users/${usersId}`)
+      .then(() => reFetchUsers())
+      .catch(() => console.log('oops something went wrong'))
+    }
 
    
 
     return data.map((users, i) => (
       
-      <div key={i} className="bookingdetails_display">
-        
-        <h4>User Email: {users.email}</h4>
-        <p>Registration Date:  {moment(users.createdAt).format("DD/MM/YYYY")}</p>
-        <p>Admin: {users.isAdmin.toString()}</p>
-        
-        
-      </div>
+      <Card style={{ height: '13rem', width: '40rem'}}>
+        <Card.Body key={i} className="bookingdetails_display">
+          <Card.Title>User Email: {users.email}</Card.Title> 
+          <Card.Text>Registration Date:  {moment(users.createdAt).format("DD/MM/YYYY")}</Card.Text>
+          <Card.Text>Admin: {users.isAdmin.toString()}</Card.Text>
+          <Button onClick={() => handleClick(users._id)} variant="primary">Delete</Button>
+        </Card.Body>
+      </Card>
     ));
   };
 
