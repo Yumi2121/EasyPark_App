@@ -4,15 +4,15 @@ import { createContext, useReducer, useEffect  } from "react";
 // to see if localsotrage worked
 // let user = null
 // try {
-//   JSON.parse(localStorage.getItem("user"))
+//   JSON.parse(sessionStorage.getItem("user"))
 // } catch {
-//   console.log('No user stored in LocalStorage')
+//   console.log('No user stored in sessionStorage')
 // }
 
 const INITIAL_STATE = {
-    //  check if user exsit in localStorage already, if yes the user already login 
-    // user: JSON.parse(localStorage.getItem("user")) || null,
-    user: localStorage.getItem("userLogin") ? JSON.parse(localStorage.getItem("userLogin")) : null,
+    //  check if user exsit in sessionStorage already, if yes the user already login 
+    // user: JSON.parse(sessionStorage.getItem("user")) || null,
+    user: sessionStorage.getItem("userLogin") ? JSON.parse(sessionStorage.getItem("userLogin")) : null,
     loading: false,
     error: null, 
 }

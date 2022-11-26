@@ -14,10 +14,9 @@ const NavbarEP = () => {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { dispatch } = useContext(AuthContext);
-    console.log(user)
 
     const handleLogout = () => {
-            localStorage.removeItem("userLogin")
+            sessionStorage.removeItem("userLogin")
             dispatch({ type: "LOGOUT" });
             navigate("/")
         }
@@ -43,7 +42,7 @@ const NavbarEP = () => {
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        <Nav.Link >{user.data?.email}</Nav.Link>
+                        <Nav.Link >{user?.email ?? user?.data?.email}</Nav.Link>
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
