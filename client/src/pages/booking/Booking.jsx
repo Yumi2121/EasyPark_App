@@ -31,7 +31,7 @@ const Booking = () => {
 
   const navigate = useNavigate();
 
-  const {data, loading, error}  = useFetch(`/api/carparks/${id}`);
+  const {data, loading, error}  = useFetch(`/carparks/${id}`);
   
   const [openDate, setOpenDate] = useState(false)
   
@@ -81,8 +81,8 @@ const Booking = () => {
         <fieldset>
          <legend>Booking Details</legend>
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="disabledTextInput">carpark</Form.Label>
-          {parkname}
+          <Form.Label htmlFor="disabledTextInput">{parkname}</Form.Label>
+          
         </Form.Group>
 
         <Form.Group className="mb-3">

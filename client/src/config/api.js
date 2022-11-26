@@ -3,8 +3,9 @@ import axios from 'axios';
 // Define an API
 
 const easyparkAPI = axios.create({
-    // baseURL: 'https://fateen-api-production.up.railway.app'
-    baseURL: 'http://localhost:27017/api'
+    // <= This only works locally
+    baseURL: 'http://localhost:27017/api'    
+    // baseURL: 'http://www.ezcarparkspot.com/api' // <= Need this for deployment
 })
 
 easyparkAPI.interceptors.request.use((req) => {
@@ -13,14 +14,7 @@ easyparkAPI.interceptors.request.use((req) => {
         req.headers["Authorization"] = `Bearer ${token}`;
     }
     return req;
-})
 
-easyparkAPI.interceptors.response.use((res) => {
-    const token = res.data.token
-    if(token) {
-        sessionStorage.setItem('token', token)
-    }
-    return res;
 })
 
 export default easyparkAPI;

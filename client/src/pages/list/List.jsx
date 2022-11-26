@@ -32,7 +32,7 @@ const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
   
-    const {data, loading, error, reFetch }  = useFetch("/api/carparks");
+    const {data, loading, error, reFetch }  = useFetch("/carparks");
     console.log(data)
 
     // Calculate the distance by filter the top 3 filtered carparks close to destination
@@ -57,7 +57,7 @@ const List = () => {
 
     return (
         <>
-            {/* <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} /> */}
+            <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} />
 
             <Container className="list-session">
                 <Row className="listContainer">                

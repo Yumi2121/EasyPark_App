@@ -43,7 +43,7 @@ const NavbarEP = () => {
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
-                        <Nav.Link >{user.email}</Nav.Link>
+                        <Nav.Link >{user.data?.email}</Nav.Link>
                         <Nav.Link onClick={handleLogout} >log out</Nav.Link>
                     </Nav>
                     )
