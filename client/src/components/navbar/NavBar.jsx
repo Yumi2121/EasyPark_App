@@ -8,8 +8,6 @@ import { AuthContext } from '../../utils/AuthContext';
 import { useNavigate } from "react-router-dom";
 
 
-
-
 const NavbarEP = () => {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
