@@ -1,18 +1,15 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-// import Admin from "../../components/admin/Admin";
+import Admin from "../../components/admin/Admin";
 import "./Admin.css";
-import AllBookingUsers from "../../components/admin/AllBookingUsers";
-
-
-
+import {Outlet} from "react-router-dom";
 
 const Home = () => {
     return (
-        <div>
-            {/* <Sidebar />  */}
-            <div>
-                <AllBookingUsers />          
+        <div style={{display: 'flex'}}>
+            <Sidebar />
+            <div style={{marginLeft: '270px'}}>
+                <Outlet />
             </div>
         </div>
     )
