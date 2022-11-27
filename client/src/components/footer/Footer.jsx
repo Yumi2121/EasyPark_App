@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
         <Container>
             <Row>
-                <Col style={{marginBottom: '80px'}}>&copy; EasyPark 2022  Made by Quoc Lam & Zumin YU </Col>
+                <Col style={{marginBottom: '80px'}}>&copy; EasyPark 2022  Made by Quoc Lam & Zumin Yu </Col>
             </Row>
         </Container>
     </footer>
