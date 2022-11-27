@@ -7,10 +7,17 @@ const useFetch = (url) => {
     const [error, setError] = useState(false)
 
     useEffect( () => {
+        const token = JSON.parse(sessionStorage.getItem('userLogin'))?.data?.token;
         const fetchData = async ()=> {
             setLoading(true);
             try{
-                const res = await easyparkAPI.get(url);
+                const res = await easyparkAPI.get(
+                    url,{
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`,  
+                        },
+                    });
                 setData(res.data);
             } catch (err) {
                 setError(err);
