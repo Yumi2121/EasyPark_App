@@ -14,6 +14,7 @@ import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
 import About from "../components/about/About";
 import Booking from "./booking/Booking";
+import Bookings from "./bookings/Bookings";
 import GoogleMapComponent from "../components/googleMap/map"
 // custom the bootstrap styling
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -37,6 +38,7 @@ function App() {
             <Route path="carparks/:id" element={<Booking />} />
             <Route path="map" element={<GoogleMapComponent />} />
             <Route path="success" element={<SuccessBooking />} />
+            <Route path="bookings" element={<Bookings />} />
             <Route path="admin" element={<Admin />} >
               <Route path="bookings" element={<AllBookingUsers />} />
               <Route path="users" element={<AllUsers />} />
