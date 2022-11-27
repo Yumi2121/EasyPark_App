@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest test/app.test.js",
+    "test-cc": "jest --coverage",
+    "test-watch": "jest --watchAll",
     "start": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "yumi",
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.213.0",
@@ -21,6 +24,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true
   }
 }
