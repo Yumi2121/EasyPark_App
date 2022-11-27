@@ -9,8 +9,8 @@ const easyparkAPI = axios.create({
 })
 
 easyparkAPI.interceptors.request.use((req) => {
-    const token = sessionStorage.getItem("userLogin")?.data?.token;
-    console.log(token);
+    const token = JSON.parse(sessionStorage.getItem('userLogin'))?.data?.token;
+    console.log('token is', token); //test to see if token is logged
     if (token) {
         req.headers["Authorization"] = `Bearer ${token}`;
     }
