@@ -34,7 +34,6 @@ const getBookingById = asyncHandler(async (req, res) => {
 // POST /api/bookings
 // private
 const createBooking = asyncHandler(async (req,res) => {
-
     const booking = new Booking ({
         carpark_name: req.body.carpark_name,
         user: req.user,
