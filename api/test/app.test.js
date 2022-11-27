@@ -1,4 +1,5 @@
-import request from 'supertest'
+// import request from 'supertest'
+require('supertest');
 import app from '../index'
 import mongoose from 'mongoose'
 import Booking from '../models/Booking'
