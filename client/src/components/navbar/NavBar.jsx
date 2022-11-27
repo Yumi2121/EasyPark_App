@@ -19,6 +19,7 @@ const NavbarEP = () => {
             navigate("/")
         }
 
+        console.log(user);
     return (
         <Navbar bg="light" expand="lg" fixed='top'>
             <Container fluid>
@@ -35,7 +36,7 @@ const NavbarEP = () => {
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                     
-                    { user && !user?.isAdmin ?                         
+                    { user && !user?.isAdmin && !user?.data?.isAdmin ?                         
                     (
                     <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
@@ -54,7 +55,7 @@ const NavbarEP = () => {
                     </Nav>
                     ): <></>}
 
-                    {user && user?.isAdmin && (
+                    {user && (user?.isAdmin || user?.data?.isAdmin) && (
                         <Nav className="d-flex"
                     style={{ maxHeight: '100px' }}
                     navbarScroll>
