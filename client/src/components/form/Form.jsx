@@ -30,7 +30,7 @@ const Form = ({ option }) => {
             dispatch({type:"REGISTER_START"})
             try{
                 const res = await easyparkAPI.post("/users/register", credentials);
-                localStorage.setItem('userLogin', JSON.stringify(res))
+                sessionStorage.setItem('userLogin', JSON.stringify(res))
                 console.log(res)
                 dispatch({ type: "REGISTER_SUCCESS", data: res.data}); 
                 navigate("/")
@@ -44,7 +44,7 @@ const Form = ({ option }) => {
             try{
                 const res = await easyparkAPI.post("/users/login", credentials);
             
-                localStorage.setItem('userLogin', JSON.stringify(res))
+                sessionStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")
             }catch(err) {
@@ -63,13 +63,13 @@ const Form = ({ option }) => {
 
     return (
         <form className='account-form' onSubmit={handleSubmit}>
-            <div className={'account-form-fields ' + (option === 1 ? 'sign-in' : (option === 2 ? 'sign-up' : 'forgot')) }>
+            <div className={'account-form-fields ' + (option === 1 ? 'sign-in' : 'sign-up') }>
                 <input onChange={handleChange} name='email' type='email' placeholder='E-mail' required />
                 <input onChange={handleChange} name='password' type='password' placeholder='Password' required={option === 1 || option === 2 ? true : false} disabled={option === 3 ? true : false} />
                 <input onChange={handleChange} name='repeat-password' type='password' placeholder='Repeat password' required={option === 2 ? true : false} disabled={option === 1 || option === 3 ? true : false} />
             </div>
             <button className='btn-submit-form' type='submit'>
-                { option === 1 ? 'Sign in' : (option === 2 ? 'Sign up' : 'Reset password') }
+                { option === 1 ? 'Sign in' : 'Sign up' }
             </button>
         </form>
     )

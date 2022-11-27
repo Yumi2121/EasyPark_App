@@ -12,7 +12,7 @@ import Card from 'react-bootstrap/Card';
 import GoogleMapComponent from "../../components/googleMap/map";
 import { Navigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-
+import easyparkAPI from '../../config/api'
 
 // const List = () => {
 
@@ -27,13 +27,23 @@ function distance(lat1, long1, lat2, long2) {
 }
 
 
-
 const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
   
     const {data, loading, error, reFetch }  = useFetch("/carparks");
-    console.log(data)
+
+    useEffect(() => {
+    const fetchData = async ()=> {
+        try{
+            const res = await easyparkAPI.get("/carparks");
+            console.log(res);
+        } catch (err) {
+            console.log(err);
+        } 
+    };
+    fetchData();
+    }, []);
 
     // Calculate the distance by filter the top 3 filtered carparks close to destination
     // const sortCarpark = data.sort((a, b) => distance(a.lat, a.lng, lat, lng) < distance(b.lat, b.lng, lat, lng))

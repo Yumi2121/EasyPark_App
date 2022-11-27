@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
-
+require('dotenv').config()
 
 // user register
 // POST /api/users/register
@@ -38,6 +38,7 @@ const register = asyncHandler(async (req, res) => {
             _id: user.id,
             email: user.email,
             token: generateToken(user._id),
+            isAdmin: user.isAdmin,
         })
     } else {
         res.status(400)
@@ -59,7 +60,8 @@ const login = asyncHandler(async (req, res) => {
         res.json({
             _id: user._id,
             email: user.email,
-            token: generateToken(user._id),
+            token: await generateToken(user._id),
+            isAdmin: user.isAdmin,
         });
         res.status(200)
     }else {
@@ -112,11 +114,21 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 
 //generate JWT
-const generateToken = (id) => {
-    return jwt.sign( {id }, process.env.JWT_KEY, {
+const generateToken = async (id) => {
+  try {
+    console.log(process.env.JWT_KEY);
+    const token = await jwt.sign( {id }, process.env.JWT_KEY, {
         expiresIn: '30d',
-    })
-}
+        // algorithm: 'none',
+    });
+    console.log('1111111111');
+    console.log(token);
+    console.log('2222222222');
+    return token;
+  } catch (error) {
+      throw error;
+  }
+};
 
 // admin only function ------------------------------------------------------
 
