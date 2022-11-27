@@ -9,9 +9,6 @@ const About = () => {
 return(
     <>
         <Container className='about-session'>
-          <div className="about-title">
-            <h1>About Us</h1>
-          </div>
          <Row>
           <Col>
             <h3 className="about-text">
@@ -21,21 +18,18 @@ return(
           </Col>
         </Row>
         <div className="icons">
-          <div className="about-subtitle">
-            <p>EasyPark Parking Spots are:</p>
-          </div>
           <div className="flex-container">
             <div class="container">
               <p>Reliable & Secure</p>
-              <img src={SafeIcon} alt="Safe" width="200"/>
+              <img src={SafeIcon} alt="Safe" />
             </div>
             <div className="container">
               <p>Easy To Find</p>
-              <img src={FlexIcon} alt="Flexable" width="200"/>
+              <img src={FlexIcon} alt="Flexable" />
             </div>
             <div className="container">
               <p>& Afordable!</p>
-              <img src={SaveIcon} alt="Savings" width="200"/>
+              <img src={SaveIcon} alt="Savings" />
             </div>
           </div>
         </div>

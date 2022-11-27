@@ -77,17 +77,20 @@ const Search = () => {
         <div className="Container">
          <div className="search-session">
             <div className="search-details">
+                <div className="search-header">
                 <h1>New Option of Parking- EasyPark</h1>
                 <p>Book now! Pay later </p>
-                <p>Where do you want to Park?  </p> 
-                <div>
+                </div>
+            
+                <div className="search-bar">
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <input ref={inputRef} 
+                    {" "}
+                    <input ref={inputRef} id="search-input"
                     // onChange={changeHandler}
-                    type="text" placeholder="Search for the address" 
+                    type="text" placeholder="address" 
                     className="searchInput" 
                    />
-                    <Button type="submit" onClick={handleSearch}>Search</Button>
+                    <Button id="search-button" variant="warning" size="sm" type="submit" onClick={handleSearch}>Search</Button>
                 </div>
             </div>
 
