@@ -5,8 +5,11 @@ import { GoogleMap, Marker,  useJsApiLoader } from '@react-google-maps/api';
 // const Gkey= process.env.googleMapsApiKey;
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  position: 'relative',
+  width: '1200px',
+  height: '400px',
+  margin: '0px auto 0px',
+  
 };
 
 function GoogleMapComponent(props) {

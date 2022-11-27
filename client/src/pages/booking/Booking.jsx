@@ -104,7 +104,7 @@ const Booking = () => {
                 /> }
         </Form.Group>
 
-        <Button type="submit" onClick={handleClick}>Book Now</Button>
+        <Button type="submit" variant="warning" onClick={handleClick}>Book Now</Button>
         {" "}
         <div>
         <small id="submitlHelp" class="form-text text-muted" >Book now and pay later!</small>

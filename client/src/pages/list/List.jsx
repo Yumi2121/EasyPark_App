@@ -60,50 +60,47 @@ const List = () => {
     const mapCarpark = []
     for (let index = 0; index < filteredCarpark.length; index ++) {
         const item = filteredCarpark[index];
-        mapCarpark.push({"lat": item.lat, 
+        mapCarpark.push({
+                "lat": item.lat, 
                 "lng": item.lng, 
                 "label": (index + 1).toString()
             });
     }
 
     return (
-        <>
-            <GoogleMapComponent lat={lat} lng={lng} carparks={mapCarpark} />
+        <div className='list'>
+           
+            <GoogleMapComponent className="Googlemap" lat={lat} lng={lng} carparks={mapCarpark} />
+            
+               
+                <div className="listSearch">
+                    <h2>Search</h2>
+                    <label>Destination</label>
+                    <input placeholder={destination} type="text" />
+                </div>
 
-            <Container className="list-session">
-                <Row className="listContainer">                
-                        <Col className="left-session">
-                            <div className="listSearch">
-                                <h2>Search</h2>
-                                <label>Destination</label>
-                                <input placeholder={destination} type="text" />
-                            </div>
+                <div className="listResult">
+                    {loading ? "loading" : <>
+                    {filteredCarpark.map((item, i) => (
+                        <div className="card-container" key={i} >
+                            <Card bg={'secondary'} text={'light'} style={{ width: '18rem'}} >
+                            <Card.Body>
+                                <Card.Title style={{fontSize: '14px'}}>{i+1} - {item.carpark_name}</Card.Title>
+                                <Card.Text style={{fontSize: '12px'}}>
+                                    {item.address}
+                                </Card.Text>
+                                <Card.Link style={{color: 'pink'}} href={`/carparks/${item._id}`} >Book</Card.Link>
+                                <Card.Link style={{color: 'white'}} >Daily from ${item.price}</Card.Link>
+                                
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                    
+                    </> }
 
-                            <div className="listResult">
-                                {loading ? "loading" : <>
-                                {filteredCarpark.map((item, i) => (
-                                    <div className="card-container" key={i} >
-                                      <Card style={{ width: '18rem' }} >
-                                        <Card.Body>
-                                            <Card.Title>{item.carpark_name}</Card.Title>
-                                            <Card.Subtitle className="mb-2 text-muted">{item.carpark_name}</Card.Subtitle>
-                                            {/* <Card.Text> */}
-                                             <p style={{color: "black"}}> {item.address} </p>
-                                            {/* </Card.Text> */}
-                                            <Card.Link href={`/carparks/${item._id}`} >Book</Card.Link>
-                                            <Button variant="primary">Daily from $6</Button>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                ))}
-                               
-                                </> }
-        
-                            </div>
-                        </Col>  
-                </Row>
-            </Container>
-        </>
+                </div>
+        </div>
     );
 };
 

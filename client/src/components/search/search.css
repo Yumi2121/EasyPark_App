@@ -1,27 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Righteous&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+
 }
 
 .search-session{
     width: 100%;
-    height: 800px;
-    background-image: url("../../images/home-bg.png");
+    height: 520px;
+    background-image: url("../../images/home-bg1.png");
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     position: relative;
     overflow: hidden;
+    justify-content: center;  
 
+}
 
+input{
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid black;
 }
 
 
 .search-details {
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 700px;
-    
-    
+    position: relative;
+    margin-top: 100px;  
+   
 
+}
+
+.search-header {
+    color: aliceblue;
+    font-family: 'Caveat', cursive, 'Righteous', cursive;
+    font-size: x-large;
+}
+
+#search-button {
+    margin-left: 10px;
 }
