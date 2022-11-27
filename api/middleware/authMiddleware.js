@@ -6,7 +6,6 @@ const asyncHandler = require('express-async-handler');
 // to verify user with correct token
 const verifyUser = asyncHandler(async (req, res, next) => {
     let token
-    console.log(99999999);
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
