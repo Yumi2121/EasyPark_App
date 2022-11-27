@@ -43,7 +43,6 @@ const Form = ({ option }) => {
             dispatch({type:"LOGIN_START"})
             try{
                 const res = await easyparkAPI.post("/users/login", credentials);
-            
                 sessionStorage.setItem('userLogin', JSON.stringify(res))
                 dispatch({ type: "LOGIN_SUCCESS", data: res.data});
                 navigate("/")

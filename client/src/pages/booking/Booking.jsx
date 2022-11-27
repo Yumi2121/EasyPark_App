@@ -19,7 +19,7 @@ import useFetch from "../../utils/useFetch";
 import { useContext } from "react";
 import { AuthContext } from "../../utils/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+import {createBookings} from '../../services/bookingServices';
 
 const Booking = () => {
   const {id} = useParams();
@@ -56,17 +56,23 @@ const Booking = () => {
           e.preventDefault();
           console.log(date[0].startDate)
         
-        const res = await axios.post("/api/bookings", {
-          carpark_name: parkname,
-          user: user.data._id,
-          start_booking_date: date[0].startDate,
-          end_booking_date: date[0].endDate,
-          }, {
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${user.data.token}`,        
-            },
-          },);
+          const res = await createBookings({
+            carpark_name: parkname,
+            user: user.data._id,
+            start_booking_date: date[0].startDate,
+            end_booking_date: date[0].endDate,
+          });
+        // const res = await axios.post("/api/bookings", {
+        //   carpark_name: parkname,
+        //   user: user.data._id,
+        //   start_booking_date: date[0].startDate,
+        //   end_booking_date: date[0].endDate,
+        //   }, {
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       "Authorization": `Bearer ${user.data.token}`,        
+        //     },
+        //   },);
 
           console.log(res)
 
