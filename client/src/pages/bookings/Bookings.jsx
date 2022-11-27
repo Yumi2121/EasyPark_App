@@ -4,7 +4,7 @@ import Bookings from "../../components/bookings/Bookings"
 const History= () => {
     return (
         <>
-        <div>Display User Bookings</div>
+        <h1>Your Bookings</h1>
         <Bookings />
         </>
     )

@@ -9,7 +9,8 @@ import { AuthContext } from "../../utils/AuthContext";
 
 import easyparkAPI from '../../config/api'
 
-const BookingsHistory = () => {
+
+const Bookings = () => {
 
   const {user} = useContext(AuthContext);
   const CurrentUserId = user.data._id;
@@ -34,4 +35,4 @@ const BookingsHistory = () => {
   ))
 }
 
-export default BookingsHistory;
+export default Bookings;
