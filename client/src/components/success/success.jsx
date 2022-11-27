@@ -28,7 +28,7 @@ function SuccessBooking() {
         <div>
           <Button href="/" variant="outline-primary">Back to Home</Button>
           {" "}
-          <Button href="/" variant="outline-primary">View my booking</Button>
+          <Button href="/bookings" variant="outline-primary">View my booking</Button>
         </div>
       </Container>
   );
