@@ -9,6 +9,7 @@ import { AuthContext } from "../../utils/AuthContext";
 
 import easyparkAPI from '../../config/api'
 
+
 const Bookings = () => {
 
   const {user} = useContext(AuthContext);
