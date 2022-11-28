@@ -3,9 +3,6 @@
 import Chance from 'chance';
 const chance = new Chance();
 
-
-
-
 describe('Easypark', () => {
 
     const email = chance.email();
