@@ -31,7 +31,7 @@ describe("users", () => {
       describe("should response with 401", () => {
         it("should response with 200", async () => {
           const response = await request(app).post('/api/users/login').send({
-            email: 'todd@example.com',
+            email: 'yumi_signup@test.com',
             password: '1234'
           })
           expect(response.statusCode).toBe(401)
