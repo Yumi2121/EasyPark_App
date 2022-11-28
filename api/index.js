@@ -35,18 +35,6 @@ mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected!!");
 });
 
-// function authenticationMiddleware(req, res, next) {
-//     const token = req.cookies["access_token"]
-
-//     jwt.verify(token, process.env.JWT_key, (err, decoded) => {
-//         if(!err){
-//             req.userId = decoded.id
-//             req.isAdmin = decoded.isAdmin
-//         }
-//         next()
-//     })
-// }
-
 // middlewares
 app.use(cookieParser());
 app.use(bodyParser.json());

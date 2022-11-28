@@ -5,18 +5,6 @@ const { verifyUser, verifyAdmin } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// router.get("/checkauthentication", verifyToken, (req, res, next) => {
-//     res.send("hello user, you are loged in.")
-// });
-
-// router.get("/checkuser/:id", verifyUser, (req, res, next) => {
-//     res.send("hello user, you are loged in and you can delete your acount.")
-// });
-
-// router.get("/checkuser/:id", verifyAdmin, (req, res, next) => {
-//     res.send("hello admin, you are loged in and you can delete any acounts.")
-// });
-
 // user register
 router.post("/register", register);
 // user login

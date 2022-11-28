@@ -80,8 +80,6 @@ const updateBooking = asyncHandler(async (req,res) => {
 // DELETE api/bookings/:id
 const deleteBookingById = asyncHandler(async (req, res) => {
     const booking = await Booking.findById(req.params.id);
-    // console.log(booking.user)
-    // console.log(req.user._id)
     if (booking) {
       if (req.user._id.toString() === booking.user.toString() || req.user.isAdmin) {
         await booking.remove();
