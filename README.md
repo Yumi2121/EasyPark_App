@@ -28,7 +28,7 @@ To use the app locally, please follow the below instructions.
 - The server will run on local host port 3000.
 
 
-On the deployed application 2 accounts have been prepaired for viewing
+On the deployed application 2 accounts have been prepared for viewing
 
 
 To view as admin:
@@ -230,7 +230,6 @@ As it stands some features were not included due to time constraints and in futu
 - Google Login
 - View a summary of all daily bookings
 
-
 ---
 
 #### Tech Stack:
@@ -251,5 +250,8 @@ As it stands some features were not included due to time constraints and in futu
 
 **DevOps**: Git, Github, VS Code
 
+---
 
+#### Retrospective
 
+Looking back doing this project was a great learning experience for both of us. Neither of us have worked on an application with another user before but instead worked on applications on our own. Jumping into not only our first time making a MERN application but one as a team which was a big challenge for us as we both not only had our own commitments but lived in different time zones as well. Syncing up our work flow was initially a difficult challenge but we pulled through. We would help each other when we encountered issues that we couldn't overcome ourselves and worked on problems as a team. The only thing that we aren't happy with was the fact that we didn't have more time to work on the project and add more features. 
