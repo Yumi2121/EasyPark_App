@@ -1,7 +1,5 @@
-import { useContext, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { AuthContext } from '../../utils/AuthContext';
@@ -23,7 +21,6 @@ const NavbarEP = () => {
     return (
         <Navbar bg="light" expand="lg" fixed='top'>
             <Container fluid>
-                {/* <img src="./logo.png" alt="easypark-logo" height={60} width={30} /> */}
                 <Navbar.Brand href="/">EasyPark</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">

@@ -12,8 +12,6 @@ const SearchItem = (item) => {
     const location = useLocation();
     const id = location.pathname.split("/");
     const [openBooking, setOpenBooking] = useState(false);
-
-        // const { data, loading, error} = useFetch(`/carparks/find${id}`);
       
         const { user } = useContext(AuthContext);
         const navigate = useNavigate();

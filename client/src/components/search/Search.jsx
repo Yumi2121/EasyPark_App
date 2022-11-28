@@ -5,16 +5,13 @@ import "./search.css";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useFetch from "../../utils/useFetch";
 import { useRef, useEffect } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../utils/AuthContext";
+
 
 
 
 const Search = () => {
 
-    
     // google map auto complete
     const autoCompleteRef = useRef();
     const inputRef = useRef();
@@ -27,9 +24,6 @@ const Search = () => {
     const [destination, setDestination] = useState("");
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
-
-    // const {user } = useContext(AuthContext);
-    // const { dispatch } = useContext(SearchContext);
     
 
     useEffect(() => {
@@ -48,30 +42,16 @@ const Search = () => {
         });
        }, []);
 
-
-
-    // URL constructor
-    // const whitePicture = new URL("../../images/white-bg2.jpg", import.meta.url)
-
-    // const {data, loading, error, reFetch } = useFetch(
-    //     `/carparks?${destination}`
-    // );
-
     // submit search 
-    const handleSearch = () => {
-        
+    const handleSearch = () => {       
         navigate("/carparks", {state:{
             lat: lat, 
             lng: lng, 
             destination: destination
         }});
-        // dispatch({ type: "NEW_SEARCH", payload: {}})
+      
     };
     
-    // const changeHandler =(e) => {
-    //     setSearchInput(e.target.value)
-    
-    // }
     
     return (
         <div className="Container">
@@ -85,9 +65,8 @@ const Search = () => {
                 <div className="search-bar">
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     {" "}
-                    <input ref={inputRef} id="search-input"
-                    // onChange={changeHandler}
-                    type="text" placeholder="address" 
+                    <input style={{width: '360px'}} ref={inputRef} id="search-input"
+                    type="text" placeholder="Please search address or place name, such as QV" 
                     className="searchInput" 
                    />
                     <Button id="search-button" variant="warning" size="sm" type="submit" onClick={handleSearch}>Search</Button>

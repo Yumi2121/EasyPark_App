@@ -22,14 +22,13 @@
 input{
     border: 0px;
     background-color: transparent;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
 }
 
 
 .search-details {
     position: relative;
     margin-top: 100px;  
-   
 
 }
 

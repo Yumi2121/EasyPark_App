@@ -21,15 +21,15 @@ return(
           <div className="flex-container">
             <div class="container">
               <p>Reliable & Secure</p>
-              <img src={SafeIcon} alt="Safe" />
+              <img id="about-img" src={SafeIcon} alt="Safe" />
             </div>
             <div className="container">
               <p>Easy To Find</p>
-              <img src={FlexIcon} alt="Flexable" />
+              <img id="about-img" src={FlexIcon} alt="Flexable" />
             </div>
             <div className="container">
               <p>& Afordable!</p>
-              <img src={SaveIcon} alt="Savings" />
+              <img id="about-img" src={SaveIcon} alt="Savings" />
             </div>
           </div>
         </div>

@@ -17,18 +17,27 @@ const AllUsers = () => {
       .catch(() => console.log('oops something went wrong'))
     }
 
-   
-
     return data.map((users, i) => (
-      
-      <Card style={{ height: '13rem', width: '40rem'}}>
-        <Card.Body key={i} className="bookingdetails_display">
-          <Card.Title>User Email: {users.email}</Card.Title> 
-          <Card.Text>Registration Date:  {moment(users.createdAt).format("DD/MM/YYYY")}</Card.Text>
-          <Card.Text>Admin: {users.isAdmin.toString()}</Card.Text>
-          <Button onClick={() => handleClick(users._id)} variant="primary">Delete</Button>
-        </Card.Body>
-      </Card>
+
+      <div className="card-container" key={i}>
+        <Card bg={"secondary"} text={"light"} style={{ width: "30rem" }}>
+          <Card.Body>
+            <Card.Title style={{ fontSize: "14px" }}>
+              User Email: {users.email}
+            </Card.Title>
+            <Card.Text style={{ fontSize: "12px" }}>
+              Registration Date:  {moment(users.createdAt).format("DD/MM/YYYY")}
+            </Card.Text>
+            <Card.Text style={{ fontSize: "12px" }}>
+             Admin: {users.isAdmin.toString()}
+            </Card.Text>
+
+            <Button onClick={() => handleClick(users._id)} variant="primary">
+              Delete
+            </Button>
+          </Card.Body>
+        </Card>
+      </div>
     ));
   };
 

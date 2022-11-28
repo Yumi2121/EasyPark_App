@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Home from "./home/Home";
 import Login from "./login/Login"
 import List from "./list/List";
 import Admin from "./admin/Admin"
-// import 'bootswatch/dist/morph/bootstrap.min.css';
 import NavbarEP from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
 import About from "../components/about/About";

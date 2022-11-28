@@ -1,27 +1,12 @@
 // import React from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-// import SearchItem from "../../components/searchItem/SearchItem";
 import "./list.css";
 import useFetch from '../../utils/useFetch';
-import { getCarparks } from '../../services/carparkServices';
 import Card from 'react-bootstrap/Card';
 import GoogleMapComponent from "../../components/googleMap/map";
-import { Navigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import easyparkAPI from '../../config/api'
-import axios from "axios";
 
-// const List = () => {
-
-//     const location = useLocation();
-//     const [destination, setDestination] = useState(location.state.destination);
-
-//     // need to modify later
-    // const {data, loading, error, reFetch }  = useFetch("/carparks?lists") 
     
 function distance(lat1, long1, lat2, long2) {
     return Math.sqrt(Math.pow(lat2-lat1, 2) + Math.pow(long2-long1, 2));
@@ -32,7 +17,7 @@ const List = () => {
     const location = useLocation();
     const {lat, lng, destination} = location.state;
   
-    const {data, loading, error, reFetch }  = useFetch("/carparks");
+    const {data, loading }  = useFetch("/carparks");
 
     useEffect(() => {
     const fetchData = async ()=> {
@@ -75,8 +60,8 @@ const List = () => {
                
                 <div className="listSearch">
                     <h2>Search</h2>
-                    <label>Destination</label>
-                    <input placeholder={destination} type="text" />
+                    <label style={{marginRight: '10px'}}>Destination</label>
+                    <input style={{width: '400px'}} placeholder={destination} type="text" />
                 </div>
 
                 <div className="listResult">

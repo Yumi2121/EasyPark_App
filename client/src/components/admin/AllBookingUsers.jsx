@@ -26,14 +26,27 @@ const AllBookingUsers = () => {
   if(!bookings && !users) return <></>
 
   return bookings.map((booking, i) => (
-    <Card style={{ height: '13rem', width: '40rem'}}>
-      <Card.Body key={i} className="bookingdetails_display">
-        <Card.Title>{booking.carpark_name}</Card.Title>
-        <Card.Text>User: {getUserEmail(booking.user)}</Card.Text>
-        <Card.Text>Duration: {moment(booking.start_booking_date).format("DD/MM/YYYY")} to {moment(booking.end_booking_date).format("DD/MM/YYYY")}</Card.Text>
-        <Button onClick={() => handleClick(booking._id)} variant="primary">Delete</Button>
-      </Card.Body>
-    </Card>
+ 
+    <div className="card-container" key={i}>
+      <Card bg={"secondary"} text={"light"} style={{ width: "30rem" }}>
+        <Card.Body>
+          <Card.Title style={{ fontSize: "14px" }}>
+            {booking.carpark_name}
+          </Card.Title>
+          <Card.Text style={{ fontSize: "12px" }}>
+            {getUserEmail(booking.user)}
+          </Card.Text>
+          <Card.Text style={{ fontSize: "12px" }}>
+            Duration: {moment(booking.start_booking_date).format("DD/MM/YYYY")}{" "}
+            to {moment(booking.end_booking_date).format("DD/MM/YYYY")}
+          </Card.Text>
+
+          <Button onClick={() => handleClick(booking._id)} variant="primary">
+            Delete
+          </Button>
+        </Card.Body>
+      </Card>
+    </div>
   ))
 }
 

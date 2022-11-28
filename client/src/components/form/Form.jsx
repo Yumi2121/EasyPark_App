@@ -3,16 +3,14 @@ import easyparkAPI from '../../config/api'
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/AuthContext";
-import { useGlobalState } from "../../utils/StateContext";
 
 const Form = ({ option }) => {
     const [credentials, setCredentials] = useState({
         email: "",
         password: "",
-
     });
 
-    const { user, loading, error, dispatch } = useContext(AuthContext);
+    const { dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
 
     // handle the form inputs change
@@ -23,8 +21,6 @@ const Form = ({ option }) => {
   // the logic after click the submit button
     const handleSubmit = async (e) => {
         e.preventDefault();
- 
-        // console.log(credentials) //test to see if credentials were being stored
 
         const SignUp = async () => {
             dispatch({type:"REGISTER_START"})

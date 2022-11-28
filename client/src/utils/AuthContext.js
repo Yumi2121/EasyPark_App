@@ -1,17 +1,7 @@
-import { createContext, useReducer, useEffect  } from "react";
-
-
-// to see if localsotrage worked
-// let user = null
-// try {
-//   JSON.parse(sessionStorage.getItem("user"))
-// } catch {
-//   console.log('No user stored in sessionStorage')
-// }
+import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
     //  check if user exsit in sessionStorage already, if yes the user already login 
-    // user: JSON.parse(sessionStorage.getItem("user")) || null,
     user: sessionStorage.getItem("userLogin") ? JSON.parse(sessionStorage.getItem("userLogin")) : null,
     loading: false,
     error: null, 

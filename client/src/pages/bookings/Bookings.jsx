@@ -1,12 +1,16 @@
 import React from "react";
 import Bookings from "../../components/bookings/Bookings"
+import Container from 'react-bootstrap/Container';
 
 const History= () => {
     return (
-        <>
-        <h1>Your Bookings</h1>
-        <Bookings />
-        </>
+        <div className="history">
+            <p>Your Bookings</p>
+
+            <div className="bookings-card">
+                <Bookings />
+            </div>
+        </div>
     )
 }
 

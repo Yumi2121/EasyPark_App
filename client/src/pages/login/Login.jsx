@@ -1,9 +1,4 @@
 import React from "react";
-import axios from "axios";
-import { useContext } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../utils/AuthContext";
 import Form from "../../components/form/Form";
 import "./login.css";
 
