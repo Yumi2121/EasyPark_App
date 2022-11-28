@@ -215,22 +215,6 @@ Verified users (managers) have access to further features such as:
 *This is the planned layout of all the pages of the  application. Including different views such as mobile.*
 
 
----
-
-#### Spring Planning
-
-We have selected Trello as our planning methodology as it is easier to visualize tasks and allows us to manage the project by separating the tasks into cards and prioritizing major ones. Another tool used is Discord which is a voice, video, and text communication app. This is essential as it is essential to keep contact with each other.
-
-### Part A Sprint
-
-![Trello1-Version1](/docs/Trello1-Version1.png)
-*This is the initial look fo the trello board.*
-
-![Trello2-version1](/docs/Trello2-version1.png)
-*As progress was done the trello board is updated including the addition of new objectives.*
-
-![Trello2-version1](/docs/Trello3-version1.png)
-*This is the latest look of the trello board before submission*
 
 ---
 #### Future Development:
@@ -270,6 +254,19 @@ As it stands some features were not included due to time constraints and in futu
 ----
 
 We have selected Trello as our planning methodology as it is easier to visualize tasks and allows us to manage the project by separating the tasks into cards and prioritizing major ones. Another tool used is Discord which is a voice, video, and text communication app. This is essential as it is essential to keep contact with each other.
+
+#### Part A Sprint
+
+![Trello1-Version1](/docs/Trello1-Version1.png)
+*This is the initial look fo the trello board.*
+
+![Trello2-version1](/docs/Trello2-version1.png)
+*As progress was done the trello board is updated including the addition of new objectives.*
+
+![Trello2-version1](/docs/Trello3-version1.png)
+*This is the latest look of the trello board before submission*
+
+#### Part B Sprint
 
 In phase one we planned our wireframe, user stories, data flow and the app architecture frame according to the client requests. When we went to the second phase, we checked all the user stories and turned them into many sprint tasks. We discussed together and picked the tasks that we wanted to complete, each sprint was added as a card in trello. In the trello card we also put more details such as description, checklist and priorities, so that we can make sure we stick with our plan most of the time. However, it was a bit hard to estimate the sprint complete time when we started, but getting a lot better after a few tasks. As we adopt agile methodology, we also organize a sprint review at the end of a sprint, so we share what we’ve learned and really help with the future coding experience. 
 
